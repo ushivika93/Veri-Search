@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Soft, easy-on-eyes colors
+				// Soft, easy-on-eyes colors with lighter greens
 				'soft-mint': 'hsl(var(--soft-mint))',
 				'soft-mint-light': 'hsl(var(--soft-mint-light))',
 				'sage-green': 'hsl(var(--sage-green))',
@@ -79,7 +79,9 @@ export default {
 				'neutral-warm': 'hsl(var(--neutral-warm))',
 				'neutral-warm-light': 'hsl(var(--neutral-warm-light))',
 				'text-soft': 'hsl(var(--text-soft))',
-				'surface-cream': 'hsl(var(--surface-cream))'
+				'surface-cream': 'hsl(var(--surface-cream))',
+				'mint-bg': 'hsl(var(--mint-bg))',
+				'mint-bg-light': 'hsl(var(--mint-bg-light))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

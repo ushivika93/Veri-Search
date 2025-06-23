@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Users, FileText, Zap, Eye, ArrowRight, LogIn } from "lucide-react";
+import { Shield, Users, FileText, Zap, Eye, ArrowRight } from "lucide-react";
 import AuthForm from "@/components/AuthForm";
 import ParticipantDashboard from "@/components/ParticipantDashboard";
 import ResearcherDashboard from "@/components/ResearcherDashboard";
@@ -45,7 +44,7 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-warm-cream-light to-soft-mint-light">
+    <div className="min-h-screen bg-gradient-to-br from-mint-bg-light to-soft-mint-light">
       {/* Navigation */}
       <nav className="bg-surface-cream/90 backdrop-blur-md border-b border-neutral-warm-light/30 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
@@ -59,14 +58,6 @@ const Index = () => {
               </span>
             </div>
             <div className="flex items-center space-x-3">
-              <Button 
-                variant="ghost" 
-                onClick={handleGetStarted}
-                className="text-neutral-warm hover:text-sage-green hover:bg-sage-green/10"
-              >
-                <LogIn className="h-4 w-4 mr-2" />
-                Login
-              </Button>
               <Button 
                 onClick={handleGetStarted}
                 className="bg-gradient-to-r from-sage-green to-soft-mint hover:from-sage-green-light hover:to-soft-mint-light text-white border-0 shadow-sm"
@@ -209,7 +200,7 @@ const Index = () => {
       </section>
 
       {/* How It Works */}
-      <section className="container mx-auto px-6 py-16 bg-gradient-to-r from-surface-cream to-warm-cream rounded-2xl mx-8 mb-16 border border-neutral-warm-light/20">
+      <section className="container mx-auto px-6 py-16 bg-gradient-to-r from-surface-cream to-mint-bg rounded-2xl mx-8 mb-16 border border-neutral-warm-light/20">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-sage-green to-dusty-blue bg-clip-text text-transparent">
             How VeriSearch Works
@@ -221,7 +212,7 @@ const Index = () => {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-sage-green to-dusty-blue rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+            <div className="w-12 h-12 bg-gradient-to-r from-sage-green to-soft-mint rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
               1
             </div>
             <h3 className="font-semibold text-text-soft mb-2">Submit & Verify</h3>
@@ -231,7 +222,7 @@ const Index = () => {
           </div>
 
           <div className="text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-soft-lavender to-soft-mint rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+            <div className="w-12 h-12 bg-gradient-to-r from-soft-lavender to-sage-green rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
               2
             </div>
             <h3 className="font-semibold text-text-soft mb-2">Track Progress</h3>
@@ -241,7 +232,7 @@ const Index = () => {
           </div>
 
           <div className="text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-soft-coral to-sage-green rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+            <div className="w-12 h-12 bg-gradient-to-r from-sage-green to-soft-mint rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
               3
             </div>
             <h3 className="font-semibold text-text-soft mb-2">Stay Informed</h3>

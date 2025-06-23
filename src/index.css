@@ -46,23 +46,25 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Soft, easy-on-eyes color palette */
-    --soft-mint: 152 40% 75%;
-    --soft-mint-light: 152 45% 85%;
-    --sage-green: 140 30% 65%;
-    --sage-green-light: 140 35% 80%;
+    /* Soft, easy-on-eyes color palette with lighter greens */
+    --soft-mint: 152 35% 82%;
+    --soft-mint-light: 152 40% 92%;
+    --sage-green: 140 25% 70%;
+    --sage-green-light: 140 30% 85%;
     --soft-lavender: 250 25% 80%;
     --soft-lavender-light: 250 30% 88%;
-    --warm-cream: 45 25% 92%;
-    --warm-cream-light: 45 30% 96%;
+    --warm-cream: 45 25% 94%;
+    --warm-cream-light: 45 30% 97%;
     --dusty-blue: 210 35% 75%;
     --dusty-blue-light: 210 40% 85%;
     --soft-coral: 15 40% 80%;
     --soft-coral-light: 15 45% 88%;
     --neutral-warm: 30 8% 50%;
-    --neutral-warm-light: 30 12% 85%;
+    --neutral-warm-light: 30 12% 88%;
     --text-soft: 210 15% 25%;
-    --surface-cream: 45 20% 97%;
+    --surface-cream: 45 15% 98%;
+    --mint-bg: 152 30% 96%;
+    --mint-bg-light: 152 25% 98%;
   }
 
   .dark {
