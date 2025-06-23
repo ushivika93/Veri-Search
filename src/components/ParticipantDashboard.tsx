@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Bell, Calendar, Eye, FileText, LogOut, Shield, TrendingUp, Users, Sparkles, Heart, Search } from "lucide-react";
+import StudySearchModal from "./StudySearchModal";
+import StudyDetailsModal from "./StudyDetailsModal";
+import FollowTypeModal from "./FollowTypeModal";
 
 interface ParticipantDashboardProps {
   onViewStudy: () => void;
@@ -13,11 +15,30 @@ interface ParticipantDashboardProps {
   onBackToHome: () => void;
 }
 
+interface Study {
+  id: number;
+  name: string;
+  sponsor: string;
+  status: string;
+  statusType: string;
+  description: string;
+  participants: number;
+  duration: string;
+  location: string;
+}
+
 const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: ParticipantDashboardProps) => {
   const [filter, setFilter] = useState<'all' | 'ongoing' | 'analyzing' | 'published'>('all');
   const [followedFilter, setFollowedFilter] = useState<'all' | 'ongoing' | 'analyzing' | 'published'>('all');
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Modal states
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false);
+  const [isFollowTypeModalOpen, setIsFollowTypeModalOpen] = useState(false);
+  const [selectedStudy, setSelectedStudy] = useState<Study | null>(null);
 
+  // Mock studies
   const mockStudies = [
     {
       id: 1,
@@ -54,6 +75,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
     }
   ];
 
+  // Mock followed studies
   const mockFollowedStudies = [
     {
       id: 4,
@@ -78,6 +100,28 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
       notifications: 1
     }
   ];
+
+  const handleSearchModalOpen = () => {
+    setIsSearchModalOpen(true);
+  };
+
+  const handleViewStudyFromSearch = (study: Study) => {
+    setSelectedStudy(study);
+    setIsSearchModalOpen(false);
+    setIsDetailsModalOpen(true);
+  };
+
+  const handleFollowStudy = (study: Study) => {
+    setIsDetailsModalOpen(false);
+    setIsFollowTypeModalOpen(true);
+  };
+
+  const handleSelectFollowType = (study: Study, type: 'participant' | 'observer') => {
+    // Here you would normally add the study to the appropriate list
+    console.log(`Following study ${study.name} as ${type}`);
+    setIsFollowTypeModalOpen(false);
+    setSelectedStudy(null);
+  };
 
   const filteredStudies = filter === 'all' 
     ? mockStudies 
@@ -121,7 +165,9 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
                   placeholder="Search studies..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 w-64 bg-white/70 border-white/30 focus:border-orange-300 focus:ring-orange-200"
+                  onFocus={handleSearchModalOpen}
+                  className="pl-10 w-64 bg-white/70 border-white/30 focus:border-orange-300 focus:ring-orange-200 cursor-pointer"
+                  readOnly
                 />
               </div>
               <Button variant="ghost" size="sm" className="relative hover:bg-orange-50 text-gray-600 hover:text-gray-800 font-normal">
@@ -413,6 +459,27 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Modals */}
+      <StudySearchModal 
+        open={isSearchModalOpen}
+        onOpenChange={setIsSearchModalOpen}
+        onViewStudy={handleViewStudyFromSearch}
+      />
+      
+      <StudyDetailsModal 
+        study={selectedStudy}
+        open={isDetailsModalOpen}
+        onOpenChange={setIsDetailsModalOpen}
+        onFollow={handleFollowStudy}
+      />
+      
+      <FollowTypeModal 
+        study={selectedStudy}
+        open={isFollowTypeModalOpen}
+        onOpenChange={setIsFollowTypeModalOpen}
+        onSelectType={handleSelectFollowType}
+      />
     </div>
   );
 };
