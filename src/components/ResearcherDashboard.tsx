@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { FileText, LogOut, Plus, Shield, Users, Calendar, TrendingUp, Edit, Sparkles, Zap } from "lucide-react";
+import StudyStatusModal from "./StudyStatusModal";
 
 interface ResearcherDashboardProps {
   onLogout: () => void;
@@ -16,6 +18,8 @@ interface ResearcherDashboardProps {
 
 const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
   const [isNewStudyOpen, setIsNewStudyOpen] = useState(false);
+  const [statusModalOpen, setStatusModalOpen] = useState(false);
+  const [selectedStudy, setSelectedStudy] = useState<any>(null);
   const [newStudy, setNewStudy] = useState({
     name: "",
     description: "",
@@ -25,7 +29,7 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
     estimatedDuration: ""
   });
 
-  const mockStudies = [
+  const [mockStudies, setMockStudies] = useState([
     {
       id: 1,
       name: "AI-Assisted Diagnostic Tool Validation",
@@ -62,7 +66,7 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
       lastUpdated: "1 week ago",
       protocolVersion: "v1.1"
     }
-  ];
+  ]);
 
   const handleSubmitStudy = (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,6 +80,25 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
       phase: "",
       estimatedDuration: ""
     });
+  };
+
+  const handleUpdateStatus = (newStatus: string, notes: string) => {
+    if (selectedStudy) {
+      setMockStudies(studies => 
+        studies.map(study => 
+          study.id === selectedStudy.id 
+            ? { ...study, status: newStatus, lastUpdated: "Just now" }
+            : study
+        )
+      );
+      console.log(`Updated study ${selectedStudy.name} to status: ${newStatus}`, notes);
+    }
+    setSelectedStudy(null);
+  };
+
+  const openStatusModal = (study: any) => {
+    setSelectedStudy(study);
+    setStatusModalOpen(true);
   };
 
   const getStatusColor = (status: string) => {
@@ -369,7 +392,12 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
                     </div>
                     
                     <div className="flex justify-between items-center pt-4 border-t border-white/30">
-                      <Button variant="outline" size="sm" className="border-orange-200 text-orange-700 hover:bg-orange-50 font-normal">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="border-orange-200 text-orange-700 hover:bg-orange-50 font-normal"
+                        onClick={() => openStatusModal(study)}
+                      >
                         Update Status
                       </Button>
                       <div className="space-x-2">
@@ -454,6 +482,14 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
           </TabsContent>
         </Tabs>
       </div>
+
+      <StudyStatusModal
+        isOpen={statusModalOpen}
+        onClose={() => setStatusModalOpen(false)}
+        studyName={selectedStudy?.name || ""}
+        currentStatus={selectedStudy?.status || ""}
+        onUpdateStatus={handleUpdateStatus}
+      />
     </div>
   );
 };
