@@ -29,17 +29,18 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
       {/* Header with logo and back button */}
       <div className="flex items-center justify-between w-full py-6">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
-            <Shield className="h-5 w-5 text-white" />
+          <div className="w-6 h-6 bg-orange-400 rounded-lg flex items-center justify-center">
+            <Shield className="h-4 w-4 text-white" />
           </div>
-          <span className="text-xl font-medium text-gray-900">VeriSearch</span>
+          <span className="text-lg font-medium text-gray-900">VeriSearch</span>
         </div>
         
         <Button 
           onClick={onBack}
-          className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg"
+          size="sm"
+          className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg text-sm"
         >
-          <ArrowLeft className="h-4 w-4 mr-2" />
+          <ArrowLeft className="h-3 w-3 mr-1" />
           Back to Home
         </Button>
       </div>

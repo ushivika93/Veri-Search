@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -46,11 +45,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-100 to-pink-100">
-      {/* Navigation */}
-      <nav className="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+      {/* Hero Section */}
+      <section className="container mx-auto px-6 py-20 text-center">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8">
+            <div className="flex items-center justify-center space-x-2 mb-6">
               <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
                 <Shield className="h-5 w-5 text-white" />
               </div>
@@ -58,21 +57,6 @@ const Index = () => {
                 VeriSearch
               </span>
             </div>
-            <Button 
-              onClick={handleGetStarted}
-              className="bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal shadow-lg"
-            >
-              Get Started
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </Button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="container mx-auto px-6 py-20 text-center">
-        <div className="max-w-4xl mx-auto">
-          <div className="mb-8">
             <Badge className="mb-6 bg-white/30 text-gray-800 border-white/30 font-normal backdrop-blur-sm">
               <Zap className="h-4 w-4 mr-2" />
               Powered by Blockchain
