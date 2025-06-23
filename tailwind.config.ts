@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -62,30 +61,7 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				// Rainbow color palette
-				'rainbow-red': 'hsl(var(--rainbow-red))',
-				'rainbow-red-light': 'hsl(var(--rainbow-red-light))',
-				'rainbow-orange': 'hsl(var(--rainbow-orange))',
-				'rainbow-orange-light': 'hsl(var(--rainbow-orange-light))',
-				'rainbow-yellow': 'hsl(var(--rainbow-yellow))',
-				'rainbow-yellow-light': 'hsl(var(--rainbow-yellow-light))',
-				'rainbow-green': 'hsl(var(--rainbow-green))',
-				'rainbow-green-light': 'hsl(var(--rainbow-green-light))',
-				'rainbow-cyan': 'hsl(var(--rainbow-cyan))',
-				'rainbow-cyan-light': 'hsl(var(--rainbow-cyan-light))',
-				'rainbow-blue': 'hsl(var(--rainbow-blue))',
-				'rainbow-blue-light': 'hsl(var(--rainbow-blue-light))',
-				'rainbow-purple': 'hsl(var(--rainbow-purple))',
-				'rainbow-purple-light': 'hsl(var(--rainbow-purple-light))',
-				'rainbow-pink': 'hsl(var(--rainbow-pink))',
-				'rainbow-pink-light': 'hsl(var(--rainbow-pink-light))',
-				'neutral-warm': 'hsl(var(--neutral-warm))',
-				'neutral-warm-light': 'hsl(var(--neutral-warm-light))',
-				'text-soft': 'hsl(var(--text-soft))',
-				'surface-cream': 'hsl(var(--surface-cream))',
-				'rainbow-bg': 'hsl(var(--rainbow-bg))',
-				'rainbow-bg-light': 'hsl(var(--rainbow-bg-light))'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
