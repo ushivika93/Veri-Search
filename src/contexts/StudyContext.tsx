@@ -22,6 +22,7 @@ interface Study {
 interface StudyContextType {
   studies: Study[];
   updateStudyStatus: (studyId: number, newStatus: string, notes: string) => void;
+  updateStudyProtocol: (studyId: number, newVersion: string, changes: string) => void;
   getStudyById: (studyId: number) => Study | undefined;
 }
 
@@ -163,12 +164,31 @@ export const StudyProvider = ({ children }: StudyProviderProps) => {
     );
   };
 
+  const updateStudyProtocol = (studyId: number, newVersion: string, changes: string) => {
+    setStudies(prevStudies => 
+      prevStudies.map(study => {
+        if (study.id === studyId) {
+          // If this study has an enrolled field (participant study), increment notifications
+          const shouldAddNotification = study.enrolled !== undefined;
+          return {
+            ...study, 
+            protocolVersion: newVersion,
+            lastUpdated: "Just now",
+            statusNotes: `Protocol updated to ${newVersion}: ${changes}`,
+            notifications: shouldAddNotification ? (study.notifications || 0) + 1 : study.notifications
+          };
+        }
+        return study;
+      })
+    );
+  };
+
   const getStudyById = (studyId: number) => {
     return studies.find(study => study.id === studyId);
   };
 
   return (
-    <StudyContext.Provider value={{ studies, updateStudyStatus, getStudyById }}>
+    <StudyContext.Provider value={{ studies, updateStudyStatus, updateStudyProtocol, getStudyById }}>
       {children}
     </StudyContext.Provider>
   );

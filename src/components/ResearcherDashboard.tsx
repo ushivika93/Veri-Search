@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { FileText, LogOut, Plus, Shield, Users, Calendar, TrendingUp, Edit, Sparkles, Zap } from "lucide-react";
 import StudyStatusModal from "./StudyStatusModal";
 import { useStudyContext } from "../contexts/StudyContext";
+import { useNavigate } from "react-router-dom";
 
 interface ResearcherDashboardProps {
   onLogout: () => void;
@@ -18,6 +19,7 @@ interface ResearcherDashboardProps {
 
 const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
   const { studies, updateStudyStatus } = useStudyContext();
+  const navigate = useNavigate();
   const [isNewStudyOpen, setIsNewStudyOpen] = useState(false);
   const [statusModalOpen, setStatusModalOpen] = useState(false);
   const [selectedStudy, setSelectedStudy] = useState<any>(null);
@@ -365,7 +367,11 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
                         <Button variant="outline" size="sm" className="border-orange-200 text-orange-700 hover:bg-orange-50 font-normal">
                           View Timeline
                         </Button>
-                        <Button className="bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal" size="sm">
+                        <Button 
+                          className="bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal" 
+                          size="sm"
+                          onClick={() => navigate(`/study/${study.id}/manage`)}
+                        >
                           Manage Study
                         </Button>
                       </div>
