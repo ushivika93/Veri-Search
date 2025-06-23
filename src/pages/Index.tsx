@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -73,14 +72,6 @@ const Index = () => {
       <section className="container mx-auto px-6 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <div className="flex items-center justify-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
-                <Shield className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-medium text-gray-900">
-                VeriSearch
-              </span>
-            </div>
             <Badge className="mb-6 bg-white/30 text-gray-800 border-white/30 font-normal backdrop-blur-sm">
               <Zap className="h-4 w-4 mr-2" />
               Powered by Blockchain
