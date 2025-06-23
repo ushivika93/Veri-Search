@@ -72,10 +72,6 @@ const Index = () => {
       <section className="container mx-auto px-6 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <Badge className="mb-6 bg-white/30 text-gray-800 border-white/30 font-normal backdrop-blur-sm">
-              <Zap className="h-4 w-4 mr-2" />
-              Powered by Blockchain
-            </Badge>
             <h1 className="text-5xl font-medium mb-6 text-gray-900">
               Reclaim transparency in research.<br />
               Track your study. Stay informed.
