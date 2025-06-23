@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, FileText, Shield, Calendar, Users } from "lucide-react";
+import { ArrowLeft, FileText, Shield, Calendar, Users, FileUp } from "lucide-react";
 import { useStudyContext } from "../contexts/StudyContext";
 import { toast } from "sonner";
 
@@ -23,6 +22,7 @@ const StudyManagement = () => {
   const [statusNotes, setStatusNotes] = useState("");
   const [newProtocol, setNewProtocol] = useState("");
   const [protocolChanges, setProtocolChanges] = useState("");
+  const [protocolFile, setProtocolFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (studyId) {
@@ -57,9 +57,33 @@ const StudyManagement = () => {
     e.preventDefault();
     if (study && newProtocol.trim() && protocolChanges.trim()) {
       updateStudyProtocol(study.id, newProtocol, protocolChanges);
-      toast.success("Protocol updated successfully");
+      
+      if (protocolFile) {
+        toast.success(`Protocol updated successfully with file: ${protocolFile.name}`);
+      } else {
+        toast.success("Protocol updated successfully");
+      }
+      
       setNewProtocol("");
       setProtocolChanges("");
+      setProtocolFile(null);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Check file type (optional - you can restrict to specific types)
+      const allowedTypes = ['.pdf', '.doc', '.docx', '.txt'];
+      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
+      
+      if (allowedTypes.includes(fileExtension)) {
+        setProtocolFile(file);
+        toast.success(`File selected: ${file.name}`);
+      } else {
+        toast.error("Please select a valid file type (.pdf, .doc, .docx, .txt)");
+        e.target.value = '';
+      }
     }
   };
 
@@ -254,6 +278,33 @@ const StudyManagement = () => {
                       className="border-orange-200 focus:border-orange-400 focus:ring-orange-200"
                       required
                     />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="protocolFile" className="text-gray-700">Upload Protocol Document</Label>
+                    <div className="flex items-center space-x-3">
+                      <div className="relative flex-1">
+                        <Input
+                          id="protocolFile"
+                          type="file"
+                          onChange={handleFileChange}
+                          accept=".pdf,.doc,.docx,.txt"
+                          className="border-orange-200 focus:border-orange-400 focus:ring-orange-200 file:mr-4 file:py-1 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100"
+                        />
+                        <FileUp className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
+                      </div>
+                    </div>
+                    {protocolFile && (
+                      <div className="p-2 bg-orange-50 rounded-md border border-orange-200">
+                        <p className="text-sm text-orange-700 flex items-center">
+                          <FileText className="h-4 w-4 mr-2" />
+                          Selected: {protocolFile.name} ({(protocolFile.size / 1024 / 1024).toFixed(2)} MB)
+                        </p>
+                      </div>
+                    )}
+                    <p className="text-xs text-gray-500">
+                      Supported formats: PDF, DOC, DOCX, TXT (Max 10MB)
+                    </p>
                   </div>
                   
                   <div className="space-y-2">
