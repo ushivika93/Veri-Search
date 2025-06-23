@@ -54,21 +54,6 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
               
               <Card 
                 className="cursor-pointer border-2 border-white/30 hover:border-white/50 hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm"
-                onClick={() => setSelectedRole('participant')}
-              >
-                <CardHeader className="text-center pb-6">
-                  <div className="w-16 h-16 bg-orange-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-8 w-8 text-white" />
-                  </div>
-                  <CardTitle className="text-gray-900 text-xl font-medium">Participant</CardTitle>
-                  <CardDescription className="text-gray-700 font-normal">
-                    Track your studies and monitor research progress
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card 
-                className="cursor-pointer border-2 border-white/30 hover:border-white/50 hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm"
                 onClick={() => setSelectedRole('researcher')}
               >
                 <CardHeader className="text-center pb-6">
@@ -81,6 +66,21 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                   </CardDescription>
                 </CardHeader>
               </Card>
+
+              <Card 
+                className="cursor-pointer border-2 border-white/30 hover:border-white/50 hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                onClick={() => setSelectedRole('participant')}
+              >
+                <CardHeader className="text-center pb-6">
+                  <div className="w-16 h-16 bg-orange-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-gray-900 text-xl font-medium">Participant/Public</CardTitle>
+                  <CardDescription className="text-gray-700 font-normal">
+                    Track your studies and monitor research progress
+                  </CardDescription>
+                </CardHeader>
+              </Card>
             </div>
           ) : (
             <Card className="border-2 border-white/30 bg-white/80 backdrop-blur-sm shadow-lg">
@@ -90,7 +90,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                     className="bg-orange-100 text-orange-700 border-orange-200"
                   >
                     <Sparkles className="h-3 w-3 mr-1" />
-                    {selectedRole === 'participant' ? 'Participant' : 'Researcher'}
+                    {selectedRole === 'participant' ? 'Participant/Public' : 'Researcher'}
                   </Badge>
                   <Button 
                     variant="ghost" 
