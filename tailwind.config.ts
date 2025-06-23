@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,17 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Anthropic-inspired colors
+				anthropic: {
+					orange: 'hsl(var(--anthropic-orange))',
+					'orange-light': 'hsl(var(--anthropic-orange-light))',
+					coral: 'hsl(var(--anthropic-coral))',
+					'coral-light': 'hsl(var(--anthropic-coral-light))',
+					cream: 'hsl(var(--anthropic-cream))',
+					'warm-gray': 'hsl(var(--anthropic-warm-gray))',
+					'text-dark': 'hsl(var(--anthropic-text-dark))',
+					accent: 'hsl(var(--anthropic-accent))'
 				}
 			},
 			borderRadius: {
