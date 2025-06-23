@@ -3,23 +3,25 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Shield, Users, FileText, Eye, Bell, TrendingUp } from "lucide-react";
+import { Shield, Users, FileText, Zap, Eye, ArrowRight } from "lucide-react";
+import AuthForm from "@/components/AuthForm";
 import ParticipantDashboard from "@/components/ParticipantDashboard";
 import ResearcherDashboard from "@/components/ResearcherDashboard";
 import StudyPublicPage from "@/components/StudyPublicPage";
-import AuthForm from "@/components/AuthForm";
 
 const Index = () => {
-  const [currentView, setCurrentView] = useState<'landing' | 'auth' | 'participant' | 'researcher' | 'study'>('landing');
-  const [userRole, setUserRole] = useState<'participant' | 'researcher' | null>(null);
+  const [currentView, setCurrentView] = useState<'home' | 'auth' | 'participant' | 'researcher' | 'study'>('home');
 
   const handleGetStarted = () => {
     setCurrentView('auth');
   };
 
   const handleLogin = (role: 'participant' | 'researcher') => {
-    setUserRole(role);
     setCurrentView(role);
+  };
+
+  const handleBack = () => {
+    setCurrentView('home');
   };
 
   const handleViewStudy = () => {
@@ -27,265 +29,240 @@ const Index = () => {
   };
 
   if (currentView === 'auth') {
-    return <AuthForm onLogin={handleLogin} onBack={() => setCurrentView('landing')} />;
+    return <AuthForm onLogin={handleLogin} onBack={handleBack} />;
   }
 
   if (currentView === 'participant') {
-    return <ParticipantDashboard onViewStudy={handleViewStudy} onLogout={() => setCurrentView('landing')} />;
+    return <ParticipantDashboard onViewStudy={handleViewStudy} onLogout={handleBack} />;
   }
 
   if (currentView === 'researcher') {
-    return <ResearcherDashboard onLogout={() => setCurrentView('landing')} />;
+    return <ResearcherDashboard onLogout={handleBack} />;
   }
 
   if (currentView === 'study') {
-    return <StudyPublicPage onBack={() => setCurrentView(userRole || 'landing')} />;
+    return <StudyPublicPage onBack={() => setCurrentView('participant')} />;
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-cyan-50 to-blue-50">
+      {/* Navigation */}
+      <nav className="bg-white/70 backdrop-blur-md border-b border-purple-100 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <Shield className="h-8 w-8 text-blue-600" />
-              <span className="text-2xl font-bold text-slate-800">VeriSearch</span>
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                <Shield className="h-5 w-5 text-white" />
+              </div>
+              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
+                VeriSearch
+              </span>
             </div>
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#participants" className="text-slate-600 hover:text-blue-600 transition-colors">Participants</a>
-              <a href="#researchers" className="text-slate-600 hover:text-blue-600 transition-colors">Researchers</a>
-              <a href="#oversight" className="text-slate-600 hover:text-blue-600 transition-colors">Oversight</a>
-              <Button variant="outline" onClick={handleGetStarted}>Login</Button>
-            </nav>
+            <Button 
+              onClick={handleGetStarted}
+              className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white border-0"
+            >
+              Get Started
+              <ArrowRight className="h-4 w-4 ml-2" />
+            </Button>
           </div>
         </div>
-      </header>
+      </nav>
 
       {/* Hero Section */}
-      <section className="py-20 px-6">
-        <div className="container mx-auto text-center">
-          <Badge className="mb-6 bg-blue-100 text-blue-700 border-blue-200" variant="secondary">
-            Blockchain-Powered Transparency
-          </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-800 mb-6 leading-tight">
-            Reclaim transparency<br />in research
-          </h1>
-          <p className="text-xl text-slate-600 mb-4">Track your study. Stay informed.</p>
-          <p className="text-lg text-slate-500 mb-8 max-w-2xl mx-auto">
-            VeriSearch provides an immutable, transparent record of clinical and medical studies, 
-            empowering participants and ensuring research integrity through blockchain technology.
-          </p>
-          <Button 
-            size="lg" 
-            onClick={handleGetStarted}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
-          >
-            Get Started
-          </Button>
+      <section className="container mx-auto px-6 py-20 text-center">
+        <div className="max-w-4xl mx-auto">
+          <div className="mb-8">
+            <Badge className="mb-6 bg-gradient-to-r from-purple-100 to-cyan-100 text-purple-700 border-purple-200">
+              <Zap className="h-4 w-4 mr-2" />
+              Powered by Blockchain
+            </Badge>
+            <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+              Reclaim transparency in research.<br />
+              Track your study. Stay informed.
+            </h1>
+            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              VeriSearch brings unprecedented transparency to clinical research through blockchain technology. 
+              Participants can track their studies in real-time, while researchers maintain immutable records 
+              of their protocols and findings.
+            </p>
+            <Button 
+              onClick={handleGetStarted}
+              size="lg"
+              className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white text-lg px-8 py-6 rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Start Your Journey
+              <ArrowRight className="h-5 w-5 ml-2" />
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="py-16 px-6">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-green-600" />
-                </div>
-                <CardTitle className="text-slate-800">For Participants</CardTitle>
-                <CardDescription className="text-slate-600">
-                  Track your enrolled studies, receive protocol updates, and stay informed about research progress.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
-                    Real-time study status updates
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
-                    Protocol change notifications
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2"></div>
-                    Results publication alerts
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+      {/* Features Section */}
+      <section className="container mx-auto px-6 py-16">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
+            Choose Your Path
+          </h2>
+          <p className="text-gray-600 text-lg">
+            Different roles, unified transparency
+          </p>
+        </div>
 
-            <Card className="border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <FileText className="h-6 w-6 text-blue-600" />
-                </div>
-                <CardTitle className="text-slate-800">For Researchers</CardTitle>
-                <CardDescription className="text-slate-600">
-                  Submit studies, update protocols, and maintain transparent research records on the blockchain.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
-                    Immutable protocol logging
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
-                    Version control for studies
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
-                    Verified researcher profiles
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Participants */}
+          <Card className="border-2 border-purple-100 hover:border-purple-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-purple-50">
+            <CardHeader className="text-center pb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Users className="h-8 w-8 text-white" />
+              </div>
+              <CardTitle className="text-purple-800 text-xl">Participants</CardTitle>
+              <CardDescription className="text-gray-600">
+                Track your enrolled studies and receive real-time updates about research progress
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <ul className="space-y-3 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Monitor study protocols in real-time
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Get notified of any changes
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
+                  Access published results instantly
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
 
-            <Card className="border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-              <CardHeader>
-                <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <Eye className="h-6 w-6 text-purple-600" />
-                </div>
-                <CardTitle className="text-slate-800">Ethical Oversight</CardTitle>
-                <CardDescription className="text-slate-600">
-                  Community governance and oversight to ensure ethical research practices and transparency.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-slate-600">
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
-                    Community flagging system
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
-                    Transparent voting process
-                  </li>
-                  <li className="flex items-center">
-                    <div className="w-1.5 h-1.5 bg-purple-500 rounded-full mr-2"></div>
-                    Public audit trails
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
+          {/* Researchers */}
+          <Card className="border-2 border-cyan-100 hover:border-cyan-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-cyan-50">
+            <CardHeader className="text-center pb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <FileText className="h-8 w-8 text-white" />
+              </div>
+              <CardTitle className="text-cyan-800 text-xl">Researchers</CardTitle>
+              <CardDescription className="text-gray-600">
+                Submit studies, update protocols, and maintain transparent research records
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <ul className="space-y-3 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                  Immutable protocol versioning
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                  Blockchain-verified submissions
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></div>
+                  Transparent research tracking
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          {/* Public Oversight */}
+          <Card className="border-2 border-emerald-100 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-emerald-50">
+            <CardHeader className="text-center pb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Eye className="h-8 w-8 text-white" />
+              </div>
+              <CardTitle className="text-emerald-800 text-xl">Public Oversight</CardTitle>
+              <CardDescription className="text-gray-600">
+                Anyone can verify study authenticity and track research progress
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <ul className="space-y-3 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                  Open study verification
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                  Community-driven oversight
+                </li>
+                <li className="flex items-center">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full mr-3"></div>
+                  Publicly auditable records
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-16 px-6 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">How VeriSearch Works</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Built on blockchain technology to ensure immutable records and complete transparency in medical research.
+      <section className="container mx-auto px-6 py-16 bg-gradient-to-r from-purple-50/50 to-cyan-50/50 rounded-3xl mx-8 mb-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
+            How VeriSearch Works
+          </h2>
+          <p className="text-gray-600 text-lg">
+            Transparency powered by blockchain technology
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="text-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+              1
+            </div>
+            <h3 className="font-semibold text-purple-800 mb-2">Submit & Verify</h3>
+            <p className="text-gray-600 text-sm">
+              Researchers submit protocols that are cryptographically signed and stored on blockchain
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600">1</span>
-              </div>
-              <h3 className="font-semibold text-slate-800 mb-2">Register & Verify</h3>
-              <p className="text-sm text-slate-600">Create your account and verify your role as participant or researcher</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600">2</span>
-              </div>
-              <h3 className="font-semibold text-slate-800 mb-2">Submit or Enroll</h3>
-              <p className="text-sm text-slate-600">Researchers submit studies; participants enroll and track progress</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-purple-600">3</span>
-              </div>
-              <h3 className="font-semibold text-slate-800 mb-2">Track & Update</h3>
-              <p className="text-sm text-slate-600">Receive real-time updates and notifications about study changes</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-orange-600">4</span>
-              </div>
-              <h3 className="font-semibold text-slate-800 mb-2">Verify Results</h3>
-              <p className="text-sm text-slate-600">Access published results with full transparency and verification</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Call to Action */}
-      <section className="py-16 px-6 bg-slate-800">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Bring Transparency to Research?</h2>
-          <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-            Join VeriSearch today and be part of the movement towards more transparent, 
-            ethical, and accountable medical research.
-          </p>
-          <Button 
-            size="lg" 
-            onClick={handleGetStarted}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg"
-          >
-            Get Started Now
-          </Button>
+          <div className="text-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+              2
+            </div>
+            <h3 className="font-semibold text-cyan-800 mb-2">Track Progress</h3>
+            <p className="text-gray-600 text-sm">
+              All changes and updates are immutably recorded, creating an audit trail
+            </p>
+          </div>
+
+          <div className="text-center">
+            <div className="w-12 h-12 bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+              3
+            </div>
+            <h3 className="font-semibold text-emerald-800 mb-2">Stay Informed</h3>
+            <p className="text-gray-600 text-sm">
+              Participants and the public receive real-time notifications about study progress
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-slate-300 py-12 px-6">
-        <div className="container mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Shield className="h-6 w-6 text-blue-400" />
-                <span className="text-xl font-bold text-white">VeriSearch</span>
-              </div>
-              <p className="text-sm text-slate-400">
-                Bringing transparency and trust to medical research through blockchain technology.
-              </p>
+      <footer className="bg-white/70 backdrop-blur-md border-t border-purple-100 py-12">
+        <div className="container mx-auto px-6 text-center">
+          <div className="flex items-center justify-center space-x-2 mb-4">
+            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+              <Shield className="h-5 w-5 text-white" />
             </div>
-            
-            <div>
-              <h4 className="font-semibold text-white mb-4">Platform</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-blue-400 transition-colors">For Participants</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">For Researchers</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Public Studies</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold text-white mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Documentation</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">FAQ</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Support</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="font-semibold text-white mb-4">Legal</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="hover:text-blue-400 transition-colors">Ethics</a></li>
-              </ul>
-            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">
+              VeriSearch
+            </span>
           </div>
-          
-          <div className="border-t border-slate-700 mt-8 pt-8 text-center text-sm text-slate-400">
-            © 2024 VeriSearch. All rights reserved. Built for transparency in medical research.
-          </div>
+          <p className="text-gray-600 mb-6">
+            Bringing transparency and trust to clinical research through blockchain technology
+          </p>
+          <Button 
+            onClick={handleGetStarted}
+            className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white border-0"
+          >
+            Join the Movement
+          </Button>
         </div>
       </footer>
     </div>
