@@ -45,10 +45,10 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
           </div>
           
           <h1 className="text-2xl font-light text-slate-800 mb-2">
-            {isLogin ? 'Welcome Back' : 'Join VeriSearch'}
+            {isLogin ? 'Sign In' : 'Join VeriSearch'}
           </h1>
           <p className="text-slate-600 font-light">
-            {isLogin ? 'Sign in to your account' : 'Create your account'}
+            {isLogin ? 'Access your account' : 'Create your account'}
           </p>
         </div>
 
