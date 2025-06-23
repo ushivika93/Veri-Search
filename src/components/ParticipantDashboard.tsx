@@ -64,17 +64,17 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-orange-100 to-pink-100">
       {/* Header */}
-      <header className="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
+      <header className="bg-white/80 backdrop-blur-md border-b border-white/30 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-                  <Shield className="h-4 w-4 text-white" />
+                <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
+                  <Shield className="h-5 w-5 text-white" />
                 </div>
-                <span className="text-xl font-bold text-gray-900">VeriSearch</span>
+                <span className="text-xl font-medium text-gray-900">VeriSearch</span>
               </div>
               <Badge className="bg-orange-100 text-orange-700 border-orange-200">
                 <Sparkles className="h-3 w-3 mr-1" />
@@ -82,13 +82,13 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
               </Badge>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="relative hover:bg-gray-50">
-                <Bell className="h-5 w-5 text-gray-600" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500 rounded-full text-xs text-white flex items-center justify-center">
+              <Button variant="ghost" size="sm" className="relative hover:bg-orange-50 text-gray-600 hover:text-gray-800 font-normal">
+                <Bell className="h-5 w-5" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-400 rounded-full text-xs text-white flex items-center justify-center">
                   3
                 </div>
               </Button>
-              <Button variant="ghost" onClick={onLogout} className="text-gray-600 hover:text-gray-800 hover:bg-gray-50">
+              <Button variant="ghost" onClick={onLogout} className="text-gray-600 hover:text-gray-800 hover:bg-orange-50 font-normal">
                 <LogOut className="h-4 w-4 mr-2" />
                 Logout
               </Button>
@@ -100,64 +100,64 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
       <div className="container mx-auto px-6 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Hey Sarah! 👋 Welcome back!
+          <h1 className="text-3xl font-medium text-gray-900 mb-2">
+            Welcome back, Sarah! 
           </h1>
-          <p className="text-gray-600">Track your studies and stay in the loop about your research journey! ✨</p>
+          <p className="text-gray-700 font-normal">Track your studies and stay informed about your research journey.</p>
         </div>
 
         {/* Quick Stats */}
         <div className="grid md:grid-cols-4 gap-6 mb-8">
-          <Card className="border-gray-200 bg-white hover:shadow-lg transition-all duration-300">
+          <Card className="border-white/30 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600">Active Studies</p>
-                  <p className="text-2xl font-bold text-orange-800">3</p>
+                  <p className="text-2xl font-medium text-orange-800">3</p>
                 </div>
-                <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-orange-400 rounded-2xl flex items-center justify-center">
                   <FileText className="h-6 w-6 text-white" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-gray-200 bg-white hover:shadow-lg transition-all duration-300">
+          <Card className="border-white/30 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600">Notifications</p>
-                  <p className="text-2xl font-bold text-orange-800">3</p>
+                  <p className="text-2xl font-medium text-orange-800">3</p>
                 </div>
-                <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-orange-400 rounded-2xl flex items-center justify-center">
                   <Bell className="h-6 w-6 text-white" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-gray-200 bg-white hover:shadow-lg transition-all duration-300">
+          <Card className="border-white/30 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600">Study Duration</p>
-                  <p className="text-2xl font-bold text-orange-800">8mo</p>
+                  <p className="text-2xl font-medium text-orange-800">8mo</p>
                 </div>
-                <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-orange-400 rounded-2xl flex items-center justify-center">
                   <Calendar className="h-6 w-6 text-white" />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-gray-200 bg-white hover:shadow-lg transition-all duration-300">
+          <Card className="border-white/30 bg-white/80 backdrop-blur-sm hover:shadow-lg transition-all duration-300">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600">Published Results</p>
-                  <p className="text-2xl font-bold text-orange-800">1</p>
+                  <p className="text-2xl font-medium text-orange-800">1</p>
                 </div>
-                <div className="w-12 h-12 bg-orange-500 rounded-2xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-orange-400 rounded-2xl flex items-center justify-center">
                   <TrendingUp className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -167,8 +167,8 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
 
         <Tabs defaultValue="studies" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2 lg:w-400 bg-white/80 backdrop-blur-sm">
-            <TabsTrigger value="studies" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">My Studies</TabsTrigger>
-            <TabsTrigger value="notifications" className="data-[state=active]:bg-orange-500 data-[state=active]:text-white">Notifications</TabsTrigger>
+            <TabsTrigger value="studies" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white font-normal">My Studies</TabsTrigger>
+            <TabsTrigger value="notifications" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white font-normal">Notifications</TabsTrigger>
           </TabsList>
 
           <TabsContent value="studies" className="space-y-6">
@@ -178,46 +178,46 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                 variant={filter === 'all' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setFilter('all')}
-                className={filter === 'all' ? 'bg-orange-500 text-white border-0' : 'border-gray-200 text-gray-700 hover:bg-gray-50'}
+                className={filter === 'all' ? 'bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal' : 'border-orange-200 text-orange-700 hover:bg-orange-50 font-normal'}
               >
-                All Studies ✨
+                All Studies
               </Button>
               <Button
                 variant={filter === 'ongoing' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setFilter('ongoing')}
-                className={filter === 'ongoing' ? 'bg-blue-500 text-white border-0' : 'border-blue-200 text-blue-700 hover:bg-blue-50'}
+                className={filter === 'ongoing' ? 'bg-blue-400 hover:bg-blue-500 text-white border-0 font-normal' : 'border-blue-200 text-blue-700 hover:bg-blue-50 font-normal'}
               >
-                Ongoing 🚀
+                Ongoing
               </Button>
               <Button
                 variant={filter === 'analyzing' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setFilter('analyzing')}
-                className={filter === 'analyzing' ? 'bg-yellow-500 text-white border-0' : 'border-yellow-200 text-yellow-700 hover:bg-yellow-50'}
+                className={filter === 'analyzing' ? 'bg-yellow-400 hover:bg-yellow-500 text-white border-0 font-normal' : 'border-yellow-200 text-yellow-700 hover:bg-yellow-50 font-normal'}
               >
-                Analyzing 🔍
+                Analyzing
               </Button>
               <Button
                 variant={filter === 'published' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setFilter('published')}
-                className={filter === 'published' ? 'bg-green-500 text-white border-0' : 'border-green-200 text-green-700 hover:bg-green-50'}
+                className={filter === 'published' ? 'bg-green-400 hover:bg-green-500 text-white border-0 font-normal' : 'border-green-200 text-green-700 hover:bg-green-50 font-normal'}
               >
-                Published 🎉
+                Published
               </Button>
             </div>
 
             {/* Studies List */}
             <div className="space-y-4">
               {filteredStudies.map((study) => (
-                <Card key={study.id} className="border-gray-200 hover:shadow-xl transition-all duration-300 bg-white">
+                <Card key={study.id} className="border-white/30 hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
                   <CardHeader>
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <CardTitle className="text-gray-800 mb-2">{study.name}</CardTitle>
-                        <CardDescription className="text-gray-600">
-                          Sponsored by {study.sponsor} 🏥
+                        <CardTitle className="text-gray-900 mb-2 font-medium">{study.name}</CardTitle>
+                        <CardDescription className="text-gray-700 font-normal">
+                          Sponsored by {study.sponsor}
                         </CardDescription>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -238,29 +238,29 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                     <div className="grid md:grid-cols-3 gap-4 text-sm">
                       <div>
                         <p className="font-medium text-gray-700">Enrolled</p>
-                        <p className="text-gray-600">{study.enrolled}</p>
+                        <p className="text-gray-600 font-normal">{study.enrolled}</p>
                       </div>
                       <div>
                         <p className="font-medium text-gray-700">Last Update</p>
-                        <p className="text-gray-600">{study.lastUpdate}</p>
+                        <p className="text-gray-600 font-normal">{study.lastUpdate}</p>
                       </div>
                       <div>
                         <p className="font-medium text-gray-700">Protocol Version</p>
-                        <p className="text-gray-600">{study.protocolVersion}</p>
+                        <p className="text-gray-600 font-normal">{study.protocolVersion}</p>
                       </div>
                     </div>
                     
-                    <div className="flex justify-between items-center pt-4 border-t border-gray-200">
-                      <Button variant="outline" size="sm" className="border-gray-200 text-gray-700 hover:bg-gray-50">
-                        View Timeline 📊
+                    <div className="flex justify-between items-center pt-4 border-t border-white/30">
+                      <Button variant="outline" size="sm" className="border-orange-200 text-orange-700 hover:bg-orange-50 font-normal">
+                        View Timeline
                       </Button>
                       <Button 
                         onClick={onViewStudy}
-                        className="bg-orange-500 hover:bg-orange-600 text-white border-0"
+                        className="bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal"
                         size="sm"
                       >
                         <Eye className="h-4 w-4 mr-2" />
-                        View Details ✨
+                        View Details
                       </Button>
                     </div>
                   </CardContent>
@@ -270,28 +270,28 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
           </TabsContent>
 
           <TabsContent value="notifications" className="space-y-4">
-            <Card className="border-gray-200 bg-white">
+            <Card className="border-white/30 bg-white/80 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle className="text-gray-800">Recent Notifications 🔔</CardTitle>
-                <CardDescription>Stay updated on your research journey!</CardDescription>
+                <CardTitle className="text-gray-900 font-medium">Recent Notifications</CardTitle>
+                <CardDescription className="text-gray-700 font-normal">Stay updated on your research journey</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="border-l-4 border-blue-400 pl-4 py-2 bg-blue-50 rounded-r-lg">
-                  <p className="font-medium text-blue-800">Protocol Update - Cardiovascular Health Study 💙</p>
-                  <p className="text-sm text-blue-600">Study protocol updated to version 2.1. Check out the changes!</p>
-                  <p className="text-xs text-blue-500 mt-1">2 days ago</p>
+                  <p className="font-medium text-blue-800">Protocol Update - Cardiovascular Health Study</p>
+                  <p className="text-sm text-blue-600 font-normal">Study protocol updated to version 2.1. Check out the changes!</p>
+                  <p className="text-xs text-blue-500 mt-1 font-normal">2 days ago</p>
                 </div>
                 
                 <div className="border-l-4 border-green-400 pl-4 py-2 bg-green-50 rounded-r-lg">
-                  <p className="font-medium text-green-800">Results Published - Sleep Quality Research 🎉</p>
-                  <p className="text-sm text-green-600">Amazing news! Final results are now available for you to explore.</p>
-                  <p className="text-xs text-green-500 mt-1">3 weeks ago</p>
+                  <p className="font-medium text-green-800">Results Published - Sleep Quality Research</p>
+                  <p className="text-sm text-green-600 font-normal">Final results are now available for you to explore.</p>
+                  <p className="text-xs text-green-500 mt-1 font-normal">3 weeks ago</p>
                 </div>
                 
                 <div className="border-l-4 border-orange-400 pl-4 py-2 bg-orange-50 rounded-r-lg">
-                  <p className="font-medium text-orange-800">Study Phase Change - Diabetes Prevention Trial 🔄</p>
-                  <p className="text-sm text-orange-600">Exciting progress! Study has moved to analysis phase.</p>
-                  <p className="text-xs text-orange-500 mt-1">1 week ago</p>
+                  <p className="font-medium text-orange-800">Study Phase Change - Diabetes Prevention Trial</p>
+                  <p className="text-sm text-orange-600 font-normal">Study has moved to analysis phase.</p>
+                  <p className="text-xs text-orange-500 mt-1 font-normal">1 week ago</p>
                 </div>
               </CardContent>
             </Card>

@@ -29,18 +29,18 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
       {/* Header with logo and back button */}
       <div className="flex items-center justify-between w-full py-6">
         <div className="flex items-center space-x-2">
-          <div className="w-6 h-6 bg-orange-400 rounded-lg flex items-center justify-center">
-            <Shield className="h-4 w-4 text-white" />
+          <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
+            <Shield className="h-5 w-5 text-white" />
           </div>
-          <span className="text-lg font-medium text-gray-900">VeriSearch</span>
+          <span className="text-xl font-medium text-gray-900">VeriSearch</span>
         </div>
         
         <Button 
           onClick={onBack}
           size="sm"
-          className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg text-sm"
+          className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg font-normal"
         >
-          <ArrowLeft className="h-3 w-3 mr-1" />
+          <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Home
         </Button>
       </div>
@@ -50,17 +50,17 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
         <div className="w-full max-w-md">
           {!selectedRole ? (
             <div className="space-y-4">
-              <h2 className="text-xl font-medium text-gray-900 text-center mb-8">Choose Your Role</h2>
+              <h2 className="text-3xl font-medium text-gray-900 text-center mb-8">Choose Your Role</h2>
               
               <Card 
-                className="cursor-pointer border border-white/30 hover:border-white/50 hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="cursor-pointer border-2 border-white/30 hover:border-white/50 hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm"
                 onClick={() => setSelectedRole('participant')}
               >
                 <CardHeader className="text-center pb-6">
-                  <div className="w-12 h-12 bg-orange-400 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <Users className="h-6 w-6 text-white" />
+                  <div className="w-16 h-16 bg-orange-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-gray-900 font-medium">Participant</CardTitle>
+                  <CardTitle className="text-gray-900 text-xl font-medium">Participant</CardTitle>
                   <CardDescription className="text-gray-700 font-normal">
                     Track your studies and monitor research progress
                   </CardDescription>
@@ -68,14 +68,14 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
               </Card>
 
               <Card 
-                className="cursor-pointer border border-white/30 hover:border-white/50 hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="cursor-pointer border-2 border-white/30 hover:border-white/50 hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm"
                 onClick={() => setSelectedRole('researcher')}
               >
                 <CardHeader className="text-center pb-6">
-                  <div className="w-12 h-12 bg-orange-400 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <FileText className="h-6 w-6 text-white" />
+                  <div className="w-16 h-16 bg-orange-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <FileText className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-gray-900 font-medium">Researcher</CardTitle>
+                  <CardTitle className="text-gray-900 text-xl font-medium">Researcher</CardTitle>
                   <CardDescription className="text-gray-700 font-normal">
                     Submit studies and maintain transparent records
                   </CardDescription>
@@ -83,11 +83,11 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
               </Card>
             </div>
           ) : (
-            <Card className="border-white/30 bg-white/80 backdrop-blur-sm shadow-lg">
+            <Card className="border-2 border-white/30 bg-white/80 backdrop-blur-sm shadow-lg">
               <CardHeader>
                 <div className="flex items-center space-x-2 mb-3">
                   <Badge 
-                    className="bg-white/30 text-gray-800 border-white/40 backdrop-blur-sm"
+                    className="bg-orange-100 text-orange-700 border-orange-200"
                   >
                     <Sparkles className="h-3 w-3 mr-1" />
                     {selectedRole === 'participant' ? 'Participant' : 'Researcher'}
@@ -96,7 +96,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                     variant="ghost" 
                     size="sm"
                     onClick={() => setSelectedRole(null)}
-                    className="text-gray-600 hover:text-gray-800 hover:bg-white/20"
+                    className="text-gray-600 hover:text-gray-800 hover:bg-white/20 font-normal"
                   >
                     Change
                   </Button>
@@ -106,7 +106,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-800 font-normal">Email</Label>
+                    <Label htmlFor="email" className="text-gray-700 font-normal">Email</Label>
                     <Input
                       id="email"
                       type="email"
@@ -114,30 +114,30 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
-                      className="border-white/30 focus:border-orange-300 focus:ring-orange-200 bg-white/50"
+                      className="border-orange-200 focus:border-orange-400 focus:ring-orange-200 bg-white/50"
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="password" className="text-gray-800 font-normal">Password</Label>
+                    <Label htmlFor="password" className="text-gray-700 font-normal">Password</Label>
                     <Input
                       id="password"
                       type="password"
                       placeholder="Enter your password"
                       required
-                      className="border-white/30 focus:border-orange-300 focus:ring-orange-200 bg-white/50"
+                      className="border-orange-200 focus:border-orange-400 focus:ring-orange-200 bg-white/50"
                     />
                   </div>
 
                   {!isLogin && (
                     <div className="space-y-2">
-                      <Label htmlFor="confirmPassword" className="text-gray-800 font-normal">Confirm Password</Label>
+                      <Label htmlFor="confirmPassword" className="text-gray-700 font-normal">Confirm Password</Label>
                       <Input
                         id="confirmPassword"
                         type="password"
                         placeholder="Confirm your password"
                         required
-                        className="border-white/30 focus:border-orange-300 focus:ring-orange-200 bg-white/50"
+                        className="border-orange-200 focus:border-orange-400 focus:ring-orange-200 bg-white/50"
                       />
                     </div>
                   )}

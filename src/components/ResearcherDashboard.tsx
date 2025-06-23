@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -224,7 +223,7 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
                 </DialogContent>
               </Dialog>
               
-              <Button variant="ghost" onClick={onLogout} className="text-orange-600 hover:text-orange-800 hover:bg-orange-50 font-normal">
+              <Button variant="ghost" onClick={onLogout} className="text-gray-600 hover:text-gray-800 hover:bg-orange-50 font-normal">
                 <LogOut className="h-4 w-4 mr-2" />
                 Logout
               </Button>
@@ -327,7 +326,7 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
                           <Badge variant="outline" className="border-orange-200 text-orange-700">{study.phase}</Badge>
                         </div>
                       </div>
-                      <Button variant="ghost" size="sm" className="text-orange-600 hover:text-orange-800 hover:bg-orange-50">
+                      <Button variant="ghost" size="sm" className="text-orange-600 hover:text-orange-800 hover:bg-orange-50 font-normal">
                         <Edit className="h-4 w-4" />
                       </Button>
                     </div>
