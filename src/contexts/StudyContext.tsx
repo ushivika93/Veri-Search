@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Study {
@@ -147,17 +146,20 @@ export const StudyProvider = ({ children }: StudyProviderProps) => {
 
   const updateStudyStatus = (studyId: number, newStatus: string, notes: string) => {
     setStudies(prevStudies => 
-      prevStudies.map(study => 
-        study.id === studyId 
-          ? { 
-              ...study, 
-              status: newStatus, 
-              lastUpdated: "Just now",
-              statusNotes: notes,
-              notifications: study.enrolled ? (study.notifications || 0) + 1 : study.notifications // Add notification for participant studies
-            }
-          : study
-      )
+      prevStudies.map(study => {
+        if (study.id === studyId) {
+          // If this study has an enrolled field (participant study), increment notifications
+          const shouldAddNotification = study.enrolled !== undefined;
+          return {
+            ...study, 
+            status: newStatus, 
+            lastUpdated: "Just now",
+            statusNotes: notes,
+            notifications: shouldAddNotification ? (study.notifications || 0) + 1 : study.notifications
+          };
+        }
+        return study;
+      })
     );
   };
 
