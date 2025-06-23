@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Shield, Users, FileText, Sparkles, Home } from "lucide-react";
+import { ArrowLeft, Shield, Users, FileText, Sparkles } from "lucide-react";
 
 interface AuthFormProps {
   onLogin: (role: 'participant' | 'researcher') => void;
@@ -26,7 +26,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-100 to-pink-100 flex flex-col px-6">
-      {/* Header with logo and navigation buttons */}
+      {/* Header with logo and back button */}
       <div className="flex items-center justify-between w-full py-6">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
@@ -35,27 +35,14 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
           <span className="text-xl font-medium text-gray-900">VeriSearch</span>
         </div>
         
-        <div className="flex items-center space-x-3">
-          <Button 
-            onClick={onBack}
-            size="sm"
-            className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg font-normal"
-          >
-            <Home className="h-4 w-4 mr-2" />
-            Back to Home
-          </Button>
-          {selectedRole && (
-            <Button 
-              onClick={() => setSelectedRole(null)}
-              size="sm"
-              variant="outline"
-              className="border-orange-200 text-orange-700 hover:bg-orange-50 font-normal"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Change Role
-            </Button>
-          )}
-        </div>
+        <Button 
+          onClick={onBack}
+          size="sm"
+          className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg font-normal"
+        >
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Back to Home
+        </Button>
       </div>
 
       {/* Main content */}
@@ -73,7 +60,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                   <div className="w-16 h-16 bg-orange-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <Users className="h-8 w-8 text-white" />
                   </div>
-                  <CardTitle className="text-gray-900 text-xl font-medium">Participant/Public</CardTitle>
+                  <CardTitle className="text-gray-900 text-xl font-medium">Participant</CardTitle>
                   <CardDescription className="text-gray-700 font-normal">
                     Track your studies and monitor research progress
                   </CardDescription>
@@ -103,8 +90,16 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                     className="bg-orange-100 text-orange-700 border-orange-200"
                   >
                     <Sparkles className="h-3 w-3 mr-1" />
-                    {selectedRole === 'participant' ? 'Participant/Public' : 'Researcher'}
+                    {selectedRole === 'participant' ? 'Participant' : 'Researcher'}
                   </Badge>
+                  <Button 
+                    variant="ghost" 
+                    size="sm"
+                    onClick={() => setSelectedRole(null)}
+                    className="text-gray-600 hover:text-gray-800 hover:bg-white/20 font-normal"
+                  >
+                    Change
+                  </Button>
                 </div>
               </CardHeader>
               
