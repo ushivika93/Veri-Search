@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -76,7 +77,7 @@ const Index = () => {
               Reclaim transparency in research.<br />
               Track your study. Stay informed.
             </h1>
-            <p className="text-xl text-gray-700 mb-8 leading-relaxed font-normal">
+            <p className="text-xl text-gray-700 mb-12 leading-relaxed font-normal">
               VeriSearch brings unprecedented transparency to clinical research through blockchain technology. 
               Participants can track their studies in real-time, while researchers maintain immutable records 
               of their protocols and findings.
