@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Shield, Users, Calendar, MapPin, Activity, Search, Plus } from "lucide-react";
+import { ArrowLeft, Shield, Users, Calendar, MapPin, Activity, Search, Plus, Home, LogOut } from "lucide-react";
 import StudySearch from "./StudySearch";
 
 interface ParticipantDashboardProps {
@@ -72,21 +72,32 @@ const ParticipantDashboard = ({ onBack }: ParticipantDashboardProps) => {
           <span className="text-xl font-medium text-gray-900">VeriSearch</span>
         </div>
         
-        <Button 
-          onClick={onBack}
-          size="sm"
-          className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg font-normal"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Home
-        </Button>
+        <div className="flex items-center space-x-3">
+          <Button 
+            onClick={onBack}
+            size="sm"
+            className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg font-normal"
+          >
+            <Home className="h-4 w-4 mr-2" />
+            Back to Home
+          </Button>
+          <Button 
+            onClick={onBack}
+            size="sm"
+            variant="outline"
+            className="border-orange-200 text-orange-700 hover:bg-orange-50 font-normal"
+          >
+            <LogOut className="h-4 w-4 mr-2" />
+            Logout
+          </Button>
+        </div>
       </div>
 
       {/* Main content */}
       <div className="flex-1">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-3xl font-medium text-gray-900 mb-2">Participant Dashboard</h1>
+            <h1 className="text-3xl font-medium text-gray-900 mb-2">Participant and Public Dashboard</h1>
             <p className="text-gray-700 font-normal">Track your study participation and discover new research opportunities</p>
           </div>
 

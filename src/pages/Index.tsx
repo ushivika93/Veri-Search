@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -34,7 +32,7 @@ const Index = () => {
   }
 
   if (currentView === 'participant') {
-    return <ParticipantDashboard onViewStudy={handleViewStudy} onLogout={handleBack} />;
+    return <ParticipantDashboard onBack={handleBack} />;
   }
 
   if (currentView === 'researcher') {
@@ -271,4 +269,3 @@ const Index = () => {
 };
 
 export default Index;
-
