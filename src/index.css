@@ -38,30 +38,25 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Anthropic-inspired color variables */
-    --anthropic-orange: 20 95% 60%;
-    --anthropic-orange-light: 25 95% 85%;
-    --anthropic-coral: 15 85% 65%;
-    --anthropic-coral-light: 15 80% 90%;
-    --anthropic-cream: 40 40% 95%;
-    --anthropic-warm-gray: 30 10% 85%;
-    --anthropic-text-dark: 20 15% 20%;
-    --anthropic-accent: 10 90% 70%;
+    /* Minimal futuristic color variables */
+    --primary-blue: 221 83% 53%;
+    --primary-blue-light: 221 83% 70%;
+    --secondary-purple: 250 84% 54%;
+    --secondary-purple-light: 250 84% 70%;
+    --accent-cyan: 189 94% 43%;
+    --accent-cyan-light: 189 94% 70%;
+    --neutral-gray: 220 13% 46%;
+    --neutral-gray-light: 220 13% 85%;
+    --text-primary: 220 26% 14%;
+    --surface-elevated: 0 0% 99%;
   }
 
   .dark {

@@ -63,17 +63,17 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Anthropic-inspired colors
-				anthropic: {
-					orange: 'hsl(var(--anthropic-orange))',
-					'orange-light': 'hsl(var(--anthropic-orange-light))',
-					coral: 'hsl(var(--anthropic-coral))',
-					'coral-light': 'hsl(var(--anthropic-coral-light))',
-					cream: 'hsl(var(--anthropic-cream))',
-					'warm-gray': 'hsl(var(--anthropic-warm-gray))',
-					'text-dark': 'hsl(var(--anthropic-text-dark))',
-					accent: 'hsl(var(--anthropic-accent))'
-				}
+				// Minimal futuristic colors
+				'primary-blue': 'hsl(var(--primary-blue))',
+				'primary-blue-light': 'hsl(var(--primary-blue-light))',
+				'secondary-purple': 'hsl(var(--secondary-purple))',
+				'secondary-purple-light': 'hsl(var(--secondary-purple-light))',
+				'accent-cyan': 'hsl(var(--accent-cyan))',
+				'accent-cyan-light': 'hsl(var(--accent-cyan-light))',
+				'neutral-gray': 'hsl(var(--neutral-gray))',
+				'neutral-gray-light': 'hsl(var(--neutral-gray-light))',
+				'text-primary': 'hsl(var(--text-primary))',
+				'surface-elevated': 'hsl(var(--surface-elevated))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
