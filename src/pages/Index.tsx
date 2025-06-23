@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -87,7 +88,7 @@ const Index = () => {
       </section>
 
       {/* Button Section */}
-      <section className="container mx-auto px-6 pb-16 text-center">
+      <section className="container mx-auto px-6 py-12 text-center">
         <Button 
           onClick={handleGetStarted}
           size="lg"
@@ -270,3 +271,4 @@ const Index = () => {
 };
 
 export default Index;
+
