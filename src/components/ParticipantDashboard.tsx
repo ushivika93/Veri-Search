@@ -56,44 +56,44 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
 
   const getStatusColor = (statusType: string) => {
     switch (statusType) {
-      case 'ongoing': return 'bg-sage-green/20 text-sage-green border-sage-green/30';
-      case 'analyzing': return 'bg-soft-lavender/20 text-soft-lavender border-soft-lavender/30';
-      case 'published': return 'bg-soft-coral/20 text-soft-coral border-soft-coral/30';
+      case 'ongoing': return 'bg-rainbow-green/20 text-rainbow-green border-rainbow-green/30';
+      case 'analyzing': return 'bg-rainbow-purple/20 text-rainbow-purple border-rainbow-purple/30';
+      case 'published': return 'bg-rainbow-orange/20 text-rainbow-orange border-rainbow-orange/30';
       default: return 'bg-neutral-warm-light/50 text-neutral-warm border-neutral-warm/30';
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-warm-cream-light to-soft-mint-light">
+    <div className="min-h-screen bg-gradient-to-br from-rainbow-bg-light via-rainbow-green-light to-rainbow-cyan-light">
       {/* Header */}
       <header className="bg-surface-cream/90 backdrop-blur-md border-b border-neutral-warm-light/30 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-sage-green to-soft-mint rounded-lg flex items-center justify-center">
+                <div className="w-6 h-6 bg-gradient-to-r from-rainbow-purple to-rainbow-pink rounded-lg flex items-center justify-center">
                   <Shield className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-sage-green to-dusty-blue bg-clip-text text-transparent">VeriSearch</span>
+                <span className="text-xl font-bold bg-gradient-to-r from-rainbow-purple via-rainbow-blue to-rainbow-cyan bg-clip-text text-transparent">VeriSearch</span>
               </div>
-              <Badge className="bg-sage-green/20 text-sage-green border-sage-green/30">
+              <Badge className="bg-rainbow-green/20 text-rainbow-green border-rainbow-green/30">
                 Participant
               </Badge>
             </div>
             <div className="flex items-center space-x-4">
               <Button 
-                className="bg-gradient-to-r from-soft-mint to-dusty-blue hover:from-soft-mint-light hover:to-dusty-blue-light text-white border-0 shadow-sm"
+                className="bg-gradient-to-r from-rainbow-cyan to-rainbow-purple hover:from-rainbow-cyan-light hover:to-rainbow-purple-light text-white border-0 shadow-sm"
               >
                 <Plus className="h-4 w-4 mr-2" />
                 Create Project
               </Button>
-              <Button variant="ghost" size="sm" className="relative hover:bg-sage-green/10">
-                <Bell className="h-5 w-5 text-sage-green" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-soft-coral to-dusty-blue rounded-full text-xs text-white flex items-center justify-center">
+              <Button variant="ghost" size="sm" className="relative hover:bg-rainbow-green/10">
+                <Bell className="h-5 w-5 text-rainbow-green" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-rainbow-orange to-rainbow-red rounded-full text-xs text-white flex items-center justify-center">
                   3
                 </div>
               </Button>
-              <Button variant="ghost" onClick={onLogout} className="text-neutral-warm hover:text-sage-green hover:bg-sage-green/10">
+              <Button variant="ghost" onClick={onLogout} className="text-neutral-warm hover:text-rainbow-purple hover:bg-rainbow-purple/10">
                 <LogOut className="h-4 w-4 mr-2" />
                 Logout
               </Button>
@@ -105,7 +105,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
       <div className="container mx-auto px-6 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-sage-green to-dusty-blue bg-clip-text text-transparent mb-2">
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-rainbow-red via-rainbow-purple to-rainbow-blue bg-clip-text text-transparent mb-2">
             Welcome back, Sarah
           </h1>
           <p className="text-neutral-warm">Track your studies and stay informed about your research journey</p>
@@ -120,7 +120,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                   <p className="text-sm font-medium text-neutral-warm">Active Studies</p>
                   <p className="text-2xl font-bold text-text-soft">3</p>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-r from-sage-green to-soft-mint rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-rainbow-green to-rainbow-cyan rounded-xl flex items-center justify-center">
                   <FileText className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -134,7 +134,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                   <p className="text-sm font-medium text-neutral-warm">Notifications</p>
                   <p className="text-2xl font-bold text-text-soft">3</p>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-r from-soft-lavender to-dusty-blue rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-rainbow-purple to-rainbow-blue rounded-xl flex items-center justify-center">
                   <Bell className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -148,7 +148,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                   <p className="text-sm font-medium text-neutral-warm">Study Duration</p>
                   <p className="text-2xl font-bold text-text-soft">8mo</p>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-r from-soft-coral to-dusty-blue rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-rainbow-orange to-rainbow-red rounded-xl flex items-center justify-center">
                   <Calendar className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -162,7 +162,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                   <p className="text-sm font-medium text-neutral-warm">Published Results</p>
                   <p className="text-2xl font-bold text-text-soft">1</p>
                 </div>
-                <div className="w-12 h-12 bg-gradient-to-r from-sage-green to-soft-lavender rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-r from-rainbow-yellow to-rainbow-green rounded-xl flex items-center justify-center">
                   <TrendingUp className="h-6 w-6 text-white" />
                 </div>
               </div>
@@ -172,8 +172,8 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
 
         <Tabs defaultValue="studies" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2 lg:w-400 bg-surface-cream border border-neutral-warm-light/30">
-            <TabsTrigger value="studies" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-sage-green data-[state=active]:to-dusty-blue data-[state=active]:text-white">My Studies</TabsTrigger>
-            <TabsTrigger value="notifications" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-sage-green data-[state=active]:to-dusty-blue data-[state=active]:text-white">Notifications</TabsTrigger>
+            <TabsTrigger value="studies" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-rainbow-green data-[state=active]:to-rainbow-cyan data-[state=active]:text-white">My Studies</TabsTrigger>
+            <TabsTrigger value="notifications" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-rainbow-purple data-[state=active]:to-rainbow-pink data-[state=active]:text-white">Notifications</TabsTrigger>
           </TabsList>
 
           <TabsContent value="studies" className="space-y-6">
@@ -183,7 +183,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                 variant={filter === 'all' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setFilter('all')}
-                className={filter === 'all' ? 'bg-gradient-to-r from-sage-green to-dusty-blue text-white border-0' : 'border-neutral-warm-light text-text-soft hover:bg-sage-green/10'}
+                className={filter === 'all' ? 'bg-gradient-to-r from-rainbow-purple to-rainbow-blue text-white border-0' : 'border-neutral-warm-light text-text-soft hover:bg-rainbow-purple/10'}
               >
                 All Studies
               </Button>
@@ -191,7 +191,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                 variant={filter === 'ongoing' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setFilter('ongoing')}
-                className={filter === 'ongoing' ? 'bg-gradient-to-r from-sage-green to-soft-mint text-white border-0' : 'border-neutral-warm-light text-text-soft hover:bg-sage-green/10'}
+                className={filter === 'ongoing' ? 'bg-gradient-to-r from-rainbow-green to-rainbow-cyan text-white border-0' : 'border-neutral-warm-light text-text-soft hover:bg-rainbow-green/10'}
               >
                 Ongoing
               </Button>
@@ -199,7 +199,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                 variant={filter === 'analyzing' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setFilter('analyzing')}
-                className={filter === 'analyzing' ? 'bg-gradient-to-r from-soft-lavender to-dusty-blue text-white border-0' : 'border-neutral-warm-light text-text-soft hover:bg-soft-lavender/10'}
+                className={filter === 'analyzing' ? 'bg-gradient-to-r from-rainbow-purple to-rainbow-blue text-white border-0' : 'border-neutral-warm-light text-text-soft hover:bg-rainbow-purple/10'}
               >
                 Analyzing
               </Button>
@@ -207,7 +207,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                 variant={filter === 'published' ? 'default' : 'outline'}
                 size="sm"
                 onClick={() => setFilter('published')}
-                className={filter === 'published' ? 'bg-gradient-to-r from-soft-coral to-dusty-blue text-white border-0' : 'border-neutral-warm-light text-text-soft hover:bg-soft-coral/10'}
+                className={filter === 'published' ? 'bg-gradient-to-r from-rainbow-orange to-rainbow-red text-white border-0' : 'border-neutral-warm-light text-text-soft hover:bg-rainbow-orange/10'}
               >
                 Published
               </Button>
@@ -227,7 +227,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                       </div>
                       <div className="flex items-center space-x-2">
                         {study.notifications > 0 && (
-                          <Badge className="bg-soft-coral/20 text-soft-coral border-soft-coral/30">
+                          <Badge className="bg-rainbow-orange/20 text-rainbow-orange border-rainbow-orange/30">
                             {study.notifications} new
                           </Badge>
                         )}
@@ -255,12 +255,12 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                     </div>
                     
                     <div className="flex justify-between items-center pt-4 border-t border-neutral-warm-light/30">
-                      <Button variant="outline" size="sm" className="border-neutral-warm-light text-text-soft hover:bg-sage-green/10">
+                      <Button variant="outline" size="sm" className="border-neutral-warm-light text-text-soft hover:bg-rainbow-purple/10">
                         View Timeline
                       </Button>
                       <Button 
                         onClick={onViewStudy}
-                        className="bg-gradient-to-r from-sage-green to-dusty-blue hover:from-sage-green-light hover:to-dusty-blue-light text-white border-0"
+                        className="bg-gradient-to-r from-rainbow-purple via-rainbow-blue to-rainbow-cyan hover:from-rainbow-purple-light hover:via-rainbow-blue-light hover:to-rainbow-cyan-light text-white border-0"
                         size="sm"
                       >
                         <Eye className="h-4 w-4 mr-2" />
@@ -280,19 +280,19 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
                 <CardDescription>Stay updated on your research journey</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="border-l-4 border-sage-green pl-4 py-2 bg-sage-green/5 rounded-r-lg">
+                <div className="border-l-4 border-rainbow-green pl-4 py-2 bg-rainbow-green/5 rounded-r-lg">
                   <p className="font-medium text-text-soft">Protocol Update - Cardiovascular Health Study</p>
                   <p className="text-sm text-neutral-warm">Study protocol updated to version 2.1. Review the changes.</p>
                   <p className="text-xs text-neutral-warm mt-1">2 days ago</p>
                 </div>
                 
-                <div className="border-l-4 border-soft-lavender pl-4 py-2 bg-soft-lavender/5 rounded-r-lg">
+                <div className="border-l-4 border-rainbow-purple pl-4 py-2 bg-rainbow-purple/5 rounded-r-lg">
                   <p className="font-medium text-text-soft">Results Published - Sleep Quality Research</p>
                   <p className="text-sm text-neutral-warm">Final results are now available for review.</p>
                   <p className="text-xs text-neutral-warm mt-1">3 weeks ago</p>
                 </div>
                 
-                <div className="border-l-4 border-soft-coral pl-4 py-2 bg-soft-coral/5 rounded-r-lg">
+                <div className="border-l-4 border-rainbow-orange pl-4 py-2 bg-rainbow-orange/5 rounded-r-lg">
                   <p className="font-medium text-text-soft">Study Phase Change - Diabetes Prevention Trial</p>
                   <p className="text-sm text-neutral-warm">Study has moved to analysis phase.</p>
                   <p className="text-xs text-neutral-warm mt-1">1 week ago</p>

@@ -25,23 +25,23 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-warm-cream-light to-soft-mint-light flex items-center justify-center px-6">
+    <div className="min-h-screen bg-gradient-to-br from-rainbow-bg-light via-rainbow-purple-light to-rainbow-pink-light flex items-center justify-center px-6">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Button 
             variant="ghost" 
             onClick={onBack}
-            className="mb-4 text-sage-green hover:text-sage-green-light hover:bg-sage-green/10"
+            className="mb-4 text-rainbow-purple hover:text-rainbow-purple-light hover:bg-rainbow-purple/10"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Button>
           
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-sage-green to-soft-mint rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-rainbow-purple to-rainbow-pink rounded-lg flex items-center justify-center">
               <Shield className="h-5 w-5 text-white" />
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-sage-green to-dusty-blue bg-clip-text text-transparent">VeriSearch</span>
+            <span className="text-2xl font-bold bg-gradient-to-r from-rainbow-purple via-rainbow-blue to-rainbow-cyan bg-clip-text text-transparent">VeriSearch</span>
           </div>
           
           <h1 className="text-2xl font-bold text-text-soft mb-2">
@@ -57,11 +57,11 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
             <h2 className="text-lg font-semibold text-text-soft text-center mb-6">Choose Your Role</h2>
             
             <Card 
-              className="cursor-pointer border border-neutral-warm-light/30 hover:border-sage-green/50 hover:shadow-lg transition-all duration-300 bg-surface-cream"
+              className="cursor-pointer border border-neutral-warm-light/30 hover:border-rainbow-green/50 hover:shadow-lg transition-all duration-300 bg-surface-cream"
               onClick={() => setSelectedRole('participant')}
             >
               <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-sage-green to-soft-mint rounded-xl flex items-center justify-center mx-auto mb-2">
+                <div className="w-12 h-12 bg-gradient-to-r from-rainbow-green to-rainbow-cyan rounded-xl flex items-center justify-center mx-auto mb-2">
                   <Users className="h-6 w-6 text-white" />
                 </div>
                 <CardTitle className="text-text-soft">Participant</CardTitle>
@@ -72,11 +72,11 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
             </Card>
 
             <Card 
-              className="cursor-pointer border border-neutral-warm-light/30 hover:border-soft-lavender/50 hover:shadow-lg transition-all duration-300 bg-surface-cream"
+              className="cursor-pointer border border-neutral-warm-light/30 hover:border-rainbow-purple/50 hover:shadow-lg transition-all duration-300 bg-surface-cream"
               onClick={() => setSelectedRole('researcher')}
             >
               <CardHeader className="text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-soft-lavender to-dusty-blue rounded-xl flex items-center justify-center mx-auto mb-2">
+                <div className="w-12 h-12 bg-gradient-to-r from-rainbow-purple to-rainbow-blue rounded-xl flex items-center justify-center mx-auto mb-2">
                   <FileText className="h-6 w-6 text-white" />
                 </div>
                 <CardTitle className="text-text-soft">Researcher</CardTitle>
@@ -92,8 +92,8 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
               <div className="flex items-center space-x-2 mb-2">
                 <Badge 
                   className={selectedRole === 'participant' ? 
-                    'bg-sage-green/20 text-sage-green border-sage-green/30' : 
-                    'bg-soft-lavender/20 text-soft-lavender border-soft-lavender/30'
+                    'bg-rainbow-green/20 text-rainbow-green border-rainbow-green/30' : 
+                    'bg-rainbow-purple/20 text-rainbow-purple border-rainbow-purple/30'
                   }
                 >
                   {selectedRole === 'participant' ? 'Participant' : 'Researcher'}
@@ -102,7 +102,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                   variant="ghost" 
                   size="sm"
                   onClick={() => setSelectedRole(null)}
-                  className="text-sage-green hover:text-sage-green-light hover:bg-sage-green/10"
+                  className="text-rainbow-purple hover:text-rainbow-purple-light hover:bg-rainbow-purple/10"
                 >
                   Change
                 </Button>
@@ -124,7 +124,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email"
                     required
-                    className="border-neutral-warm-light/50 focus:border-sage-green focus:ring-sage-green/20"
+                    className="border-neutral-warm-light/50 focus:border-rainbow-purple focus:ring-rainbow-purple/20"
                   />
                 </div>
                 
@@ -135,7 +135,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                     type="password"
                     placeholder="Enter your password"
                     required
-                    className="border-neutral-warm-light/50 focus:border-sage-green focus:ring-sage-green/20"
+                    className="border-neutral-warm-light/50 focus:border-rainbow-purple focus:ring-rainbow-purple/20"
                   />
                 </div>
 
@@ -147,14 +147,14 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                       type="password"
                       placeholder="Confirm your password"
                       required
-                      className="border-neutral-warm-light/50 focus:border-sage-green focus:ring-sage-green/20"
+                      className="border-neutral-warm-light/50 focus:border-rainbow-purple focus:ring-rainbow-purple/20"
                     />
                   </div>
                 )}
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-to-r from-sage-green to-dusty-blue hover:from-sage-green-light hover:to-dusty-blue-light text-white border-0 shadow-sm"
+                  className="w-full bg-gradient-to-r from-rainbow-purple via-rainbow-pink to-rainbow-red hover:from-rainbow-purple-light hover:via-rainbow-pink-light hover:to-rainbow-red-light text-white border-0 shadow-sm"
                   disabled={!email}
                 >
                   {isLogin ? 'Sign In' : 'Create Account'}
@@ -165,7 +165,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                 <Button 
                   variant="link" 
                   onClick={() => setIsLogin(!isLogin)}
-                  className="text-sage-green hover:text-sage-green-light"
+                  className="text-rainbow-purple hover:text-rainbow-purple-light"
                 >
                   {isLogin ? "New here? Create an account" : "Already have an account? Sign in"}
                 </Button>

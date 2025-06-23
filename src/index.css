@@ -46,25 +46,31 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Soft, easy-on-eyes color palette with lighter greens */
-    --soft-mint: 152 35% 82%;
-    --soft-mint-light: 152 40% 92%;
-    --sage-green: 140 25% 70%;
-    --sage-green-light: 140 30% 85%;
-    --soft-lavender: 250 25% 80%;
-    --soft-lavender-light: 250 30% 88%;
-    --warm-cream: 45 25% 94%;
-    --warm-cream-light: 45 30% 97%;
-    --dusty-blue: 210 35% 75%;
-    --dusty-blue-light: 210 40% 85%;
-    --soft-coral: 15 40% 80%;
-    --soft-coral-light: 15 45% 88%;
+    /* Rainbow/Multi-color palette - vibrant and colorful */
+    --rainbow-red: 0 85% 70%;
+    --rainbow-red-light: 0 85% 85%;
+    --rainbow-orange: 30 90% 68%;
+    --rainbow-orange-light: 30 90% 82%;
+    --rainbow-yellow: 52 98% 68%;
+    --rainbow-yellow-light: 52 98% 82%;
+    --rainbow-green: 145 85% 65%;
+    --rainbow-green-light: 145 85% 80%;
+    --rainbow-cyan: 180 85% 65%;
+    --rainbow-cyan-light: 180 85% 80%;
+    --rainbow-blue: 220 85% 70%;
+    --rainbow-blue-light: 220 85% 82%;
+    --rainbow-purple: 270 85% 75%;
+    --rainbow-purple-light: 270 85% 85%;
+    --rainbow-pink: 320 85% 75%;
+    --rainbow-pink-light: 320 85% 85%;
+    
+    /* Neutral colors that work with rainbow */
     --neutral-warm: 30 8% 50%;
-    --neutral-warm-light: 30 12% 88%;
+    --neutral-warm-light: 30 12% 92%;
     --text-soft: 210 15% 25%;
     --surface-cream: 45 15% 98%;
-    --mint-bg: 152 30% 96%;
-    --mint-bg-light: 152 25% 98%;
+    --rainbow-bg: 45 25% 97%;
+    --rainbow-bg-light: 45 30% 99%;
   }
 
   .dark {
