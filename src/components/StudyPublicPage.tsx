@@ -1,8 +1,9 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Calendar, FileText, Shield, Users, ExternalLink, Clock, Sparkles, Heart, Zap } from "lucide-react";
+import { ArrowLeft, Calendar, FileText, Shield, Users, ExternalLink, Clock, MapPin } from "lucide-react";
 
 interface StudyPublicPageProps {
   onBack: () => void;
@@ -72,49 +73,42 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
 
   const getEventIcon = (type: string) => {
     switch (type) {
-      case 'milestone': return <Calendar className="h-4 w-4 text-blue-600" />;
-      case 'enrollment': return <Users className="h-4 w-4 text-green-600" />;
+      case 'milestone': return <Calendar className="h-4 w-4 text-orange-600" />;
+      case 'enrollment': return <Users className="h-4 w-4 text-orange-600" />;
       case 'protocol': return <FileText className="h-4 w-4 text-orange-600" />;
-      case 'safety': return <Shield className="h-4 w-4 text-red-600" />;
-      default: return <Clock className="h-4 w-4 text-gray-600" />;
+      case 'safety': return <Shield className="h-4 w-4 text-orange-600" />;
+      default: return <Clock className="h-4 w-4 text-orange-600" />;
     }
   };
 
   const getEventColor = (type: string) => {
-    switch (type) {
-      case 'milestone': return 'border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50';
-      case 'enrollment': return 'border-green-200 bg-gradient-to-r from-green-50 to-emerald-50';
-      case 'protocol': return 'border-orange-200 bg-gradient-to-r from-orange-50 to-yellow-50';
-      case 'safety': return 'border-red-200 bg-gradient-to-r from-red-50 to-pink-50';
-      default: return 'border-purple-200 bg-gradient-to-r from-purple-50 to-pink-50';
-    }
+    return 'border-orange-200 bg-orange-50';
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-cyan-50 to-blue-50">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-purple-100 sticky top-0 z-50">
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" onClick={onBack} className="text-purple-600 hover:text-purple-800 hover:bg-purple-50">
+              <Button variant="ghost" onClick={onBack} className="text-gray-600 hover:text-gray-800 hover:bg-gray-100">
                 <ArrowLeft className="h-4 w-4 mr-2" />
                 Back
               </Button>
               <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                <div className="w-6 h-6 bg-orange-400 rounded-lg flex items-center justify-center">
                   <Shield className="h-4 w-4 text-white" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent">VeriSearch</span>
+                <span className="text-xl font-semibold text-gray-900">VeriSearch</span>
               </div>
-              <Badge className="bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 border-blue-200">
-                <Sparkles className="h-3 w-3 mr-1" />
+              <Badge className="bg-orange-100 text-orange-700 border-orange-200">
                 Public Study Page
               </Badge>
             </div>
-            <Button variant="outline" className="border-purple-200 text-purple-700 hover:bg-purple-50">
+            <Button variant="outline" className="border-orange-200 text-orange-700 hover:bg-orange-50">
               <ExternalLink className="h-4 w-4 mr-2" />
-              Share Study ✨
+              Share Study
             </Button>
           </div>
         </div>
@@ -125,18 +119,17 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
         <div className="mb-8">
           <div className="flex items-start justify-between mb-6">
             <div className="flex-1">
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-cyan-600 bg-clip-text text-transparent mb-2">
-                {studyData.name} 💖
+              <h1 className="text-3xl font-semibold text-gray-900 mb-2">
+                {studyData.name}
               </h1>
               <p className="text-lg text-gray-600 mb-4">{studyData.description}</p>
               <div className="flex flex-wrap items-center gap-3">
-                <Badge className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border-green-200">
-                  <Heart className="h-3 w-3 mr-1" />
+                <Badge className="bg-green-100 text-green-700 border-green-200">
                   {studyData.status}
                 </Badge>
-                <Badge variant="outline" className="border-purple-200 text-purple-700">{studyData.phase}</Badge>
+                <Badge variant="outline" className="border-gray-200 text-gray-700">{studyData.phase}</Badge>
                 <span className="text-sm text-gray-600">
-                  Sponsored by <strong>{studyData.sponsor}</strong> 🏥
+                  Sponsored by <strong>{studyData.sponsor}</strong>
                 </span>
               </div>
             </div>
@@ -144,23 +137,23 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
 
           {/* Quick Stats */}
           <div className="grid md:grid-cols-4 gap-6 mb-8">
-            <Card className="border-green-100 bg-gradient-to-br from-white to-green-50 hover:shadow-lg transition-all duration-300">
+            <Card className="border-gray-200 bg-white hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-green-600">Enrollment</p>
-                    <p className="text-2xl font-bold text-green-800">
+                    <p className="text-sm font-medium text-gray-600">Enrollment</p>
+                    <p className="text-2xl font-semibold text-gray-900">
                       {studyData.participants}/{studyData.targetParticipants}
                     </p>
                   </div>
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl flex items-center justify-center">
-                    <Users className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <Users className="h-6 w-6 text-orange-600" />
                   </div>
                 </div>
                 <div className="mt-3">
-                  <div className="w-full bg-green-100 rounded-full h-2">
+                  <div className="w-full bg-gray-200 rounded-full h-2">
                     <div 
-                      className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full"
+                      className="bg-orange-400 h-2 rounded-full"
                       style={{ width: `${(studyData.participants / studyData.targetParticipants) * 100}%` }}
                     ></div>
                   </div>
@@ -168,43 +161,43 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
               </CardContent>
             </Card>
 
-            <Card className="border-blue-100 bg-gradient-to-br from-white to-blue-50 hover:shadow-lg transition-all duration-300">
+            <Card className="border-gray-200 bg-white hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-blue-600">Protocol Version</p>
-                    <p className="text-2xl font-bold text-blue-800">{studyData.protocolVersion}</p>
+                    <p className="text-sm font-medium text-gray-600">Protocol Version</p>
+                    <p className="text-2xl font-semibold text-gray-900">{studyData.protocolVersion}</p>
                   </div>
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-2xl flex items-center justify-center">
-                    <FileText className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <FileText className="h-6 w-6 text-orange-600" />
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-orange-100 bg-gradient-to-br from-white to-orange-50 hover:shadow-lg transition-all duration-300">
+            <Card className="border-gray-200 bg-white hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-orange-600">Duration</p>
-                    <p className="text-2xl font-bold text-orange-800">12mo</p>
+                    <p className="text-sm font-medium text-gray-600">Duration</p>
+                    <p className="text-2xl font-semibold text-gray-900">12mo</p>
                   </div>
-                  <div className="w-12 h-12 bg-gradient-to-r from-orange-400 to-yellow-400 rounded-2xl flex items-center justify-center">
-                    <Calendar className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <Calendar className="h-6 w-6 text-orange-600" />
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-green-100 bg-gradient-to-br from-white to-green-50 hover:shadow-lg transition-all duration-300">
+            <Card className="border-gray-200 bg-white hover:shadow-md transition-shadow">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm font-medium text-green-600">Blockchain Verified</p>
-                    <p className="text-lg font-bold text-green-700">✓ Verified</p>
+                    <p className="text-sm font-medium text-gray-600">Blockchain Verified</p>
+                    <p className="text-lg font-semibold text-green-700">Verified</p>
                   </div>
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <Shield className="h-6 w-6 text-green-600" />
                   </div>
                 </div>
               </CardContent>
@@ -213,18 +206,18 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
         </div>
 
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 lg:w-800 bg-white/80 backdrop-blur-sm">
-            <TabsTrigger value="overview" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white">Overview</TabsTrigger>
-            <TabsTrigger value="timeline" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white">Timeline</TabsTrigger>
-            <TabsTrigger value="protocol" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white">Protocol Log</TabsTrigger>
-            <TabsTrigger value="verification" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white">Verification</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-4 lg:w-800 bg-white">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white">Overview</TabsTrigger>
+            <TabsTrigger value="timeline" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white">Timeline</TabsTrigger>
+            <TabsTrigger value="protocol" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white">Protocol Log</TabsTrigger>
+            <TabsTrigger value="verification" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white">Verification</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="border-purple-100 bg-white/80 backdrop-blur-sm">
+              <Card className="border-gray-200 bg-white">
                 <CardHeader>
-                  <CardTitle className="text-gray-800">Study Details 📋</CardTitle>
+                  <CardTitle className="text-gray-900">Study Details</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid grid-cols-2 gap-4 text-sm">
@@ -248,9 +241,9 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
                 </CardContent>
               </Card>
 
-              <Card className="border-cyan-100 bg-white/80 backdrop-blur-sm">
+              <Card className="border-gray-200 bg-white">
                 <CardHeader>
-                  <CardTitle className="text-gray-800">Research Team 👥</CardTitle>
+                  <CardTitle className="text-gray-900">Research Team</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
@@ -269,9 +262,9 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
               </Card>
             </div>
 
-            <Card className="border-purple-100 bg-white/80 backdrop-blur-sm">
+            <Card className="border-gray-200 bg-white">
               <CardHeader>
-                <CardTitle className="text-gray-800">Study Objectives 🎯</CardTitle>
+                <CardTitle className="text-gray-900">Study Objectives</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -296,22 +289,22 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
           </TabsContent>
 
           <TabsContent value="timeline" className="space-y-6">
-            <Card className="border-purple-100 bg-white/80 backdrop-blur-sm">
+            <Card className="border-gray-200 bg-white">
               <CardHeader>
-                <CardTitle className="text-gray-800">Study Timeline 📅</CardTitle>
+                <CardTitle className="text-gray-900">Study Timeline</CardTitle>
                 <CardDescription>Complete history of study milestones and updates</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   {timelineEvents.map((event, index) => (
-                    <div key={index} className={`p-4 rounded-xl border ${getEventColor(event.type)}`}>
+                    <div key={index} className={`p-4 rounded-lg border ${getEventColor(event.type)}`}>
                       <div className="flex items-start space-x-3">
                         <div className="flex-shrink-0 mt-1">
                           {getEventIcon(event.type)}
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
-                            <h4 className="font-medium text-gray-800">{event.event} ✨</h4>
+                            <h4 className="font-medium text-gray-800">{event.event}</h4>
                             <span className="text-sm text-gray-600">{event.date}</span>
                           </div>
                           <p className="text-sm text-gray-600 mt-1">{event.description}</p>
@@ -325,18 +318,17 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
           </TabsContent>
 
           <TabsContent value="protocol" className="space-y-6">
-            <Card className="border-purple-100 bg-white/80 backdrop-blur-sm">
+            <Card className="border-gray-200 bg-white">
               <CardHeader>
-                <CardTitle className="text-gray-800">Immutable Protocol Log 🔒</CardTitle>
+                <CardTitle className="text-gray-900">Immutable Protocol Log</CardTitle>
                 <CardDescription>Blockchain-verified protocol versions and changes</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="p-4 border border-green-200 rounded-xl bg-gradient-to-r from-green-50 to-emerald-50">
+                  <div className="p-4 border border-green-200 rounded-lg bg-green-50">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-medium text-green-800">Protocol v2.1 (Current) ✨</h4>
-                      <Badge className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border-green-200">
-                        <Zap className="h-3 w-3 mr-1" />
+                      <h4 className="font-medium text-green-800">Protocol v2.1 (Current)</h4>
+                      <Badge className="bg-green-100 text-green-700 border-green-200">
                         Active
                       </Badge>
                     </div>
@@ -349,43 +341,43 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
                     </div>
                   </div>
 
-                  <div className="p-4 border border-purple-200 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50">
+                  <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-medium text-purple-800">Protocol v2.0</h4>
-                      <Badge variant="outline" className="border-purple-200 text-purple-700">Superseded</Badge>
+                      <h4 className="font-medium text-gray-800">Protocol v2.0</h4>
+                      <Badge variant="outline" className="border-gray-200 text-gray-700">Superseded</Badge>
                     </div>
-                    <p className="text-sm text-purple-600 mb-2">
+                    <p className="text-sm text-gray-600 mb-2">
                       Enhanced safety monitoring procedures and adverse event reporting
                     </p>
-                    <div className="text-xs text-purple-500">
+                    <div className="text-xs text-gray-500">
                       <p>Hash: 0x1a2b3c4...</p>
                       <p>Timestamp: October 8, 2024, 09:15 UTC</p>
                     </div>
                   </div>
 
-                  <div className="p-4 border border-purple-200 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50">
+                  <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-medium text-purple-800">Protocol v1.1</h4>
-                      <Badge variant="outline" className="border-purple-200 text-purple-700">Superseded</Badge>
+                      <h4 className="font-medium text-gray-800">Protocol v1.1</h4>
+                      <Badge variant="outline" className="border-gray-200 text-gray-700">Superseded</Badge>
                     </div>
-                    <p className="text-sm text-purple-600 mb-2">
+                    <p className="text-sm text-gray-600 mb-2">
                       Minor amendments to data collection procedures and participant communication
                     </p>
-                    <div className="text-xs text-purple-500">
+                    <div className="text-xs text-gray-500">
                       <p>Hash: 0x5e6f7g8...</p>
                       <p>Timestamp: May 20, 2024, 16:45 UTC</p>
                     </div>
                   </div>
 
-                  <div className="p-4 border border-purple-200 rounded-xl bg-gradient-to-r from-purple-50 to-pink-50">
+                  <div className="p-4 border border-gray-200 rounded-lg bg-gray-50">
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-medium text-purple-800">Protocol v1.0</h4>
-                      <Badge variant="outline" className="border-purple-200 text-purple-700">Original</Badge>
+                      <h4 className="font-medium text-gray-800">Protocol v1.0</h4>
+                      <Badge variant="outline" className="border-gray-200 text-gray-700">Original</Badge>
                     </div>
-                    <p className="text-sm text-purple-600 mb-2">
+                    <p className="text-sm text-gray-600 mb-2">
                       Initial protocol submitted and approved by IRB
                     </p>
-                    <div className="text-xs text-purple-500">
+                    <div className="text-xs text-gray-500">
                       <p>Hash: 0x9h0i1j2...</p>
                       <p>Timestamp: March 15, 2024, 08:00 UTC</p>
                     </div>
@@ -396,31 +388,30 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
           </TabsContent>
 
           <TabsContent value="verification" className="space-y-6">
-            <Card className="border-purple-100 bg-white/80 backdrop-blur-sm">
+            <Card className="border-gray-200 bg-white">
               <CardHeader>
-                <CardTitle className="text-gray-800">Blockchain Verification 🔗</CardTitle>
+                <CardTitle className="text-gray-900">Blockchain Verification</CardTitle>
                 <CardDescription>Immutable verification details and researcher credentials</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl">
+                <div className="flex items-center justify-between p-4 bg-green-50 border border-green-200 rounded-lg">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full flex items-center justify-center">
-                      <Shield className="h-5 w-5 text-white" />
+                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                      <Shield className="h-5 w-5 text-green-600" />
                     </div>
                     <div>
-                      <p className="font-medium text-green-800">Verified on Blockchain ✅</p>
+                      <p className="font-medium text-green-800">Verified on Blockchain</p>
                       <p className="text-sm text-green-600">All study data and protocols are immutably recorded</p>
                     </div>
                   </div>
-                  <Badge className="bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 border-green-200">
-                    <Sparkles className="h-3 w-3 mr-1" />
+                  <Badge className="bg-green-100 text-green-700 border-green-200">
                     Verified
                   </Badge>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <h4 className="font-medium text-gray-800">Study Verification 🔬</h4>
+                    <h4 className="font-medium text-gray-800">Study Verification</h4>
                     <div className="text-sm space-y-2">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Study ID:</span>
@@ -438,7 +429,7 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
                   </div>
 
                   <div className="space-y-3">
-                    <h4 className="font-medium text-gray-800">Researcher Verification 👨‍🔬</h4>
+                    <h4 className="font-medium text-gray-800">Researcher Verification</h4>
                     <div className="text-sm space-y-2">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Researcher Wallet:</span>
@@ -450,17 +441,17 @@ const StudyPublicPage = ({ onBack }: StudyPublicPageProps) => {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Institution Verified:</span>
-                        <span className="text-green-700">✓ Yes</span>
+                        <span className="text-green-700">Yes</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-4 bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-xl">
-                  <h4 className="font-medium text-blue-800 mb-2">Transparency Guarantee 🛡️</h4>
-                  <p className="text-sm text-blue-700">
+                <div className="p-4 bg-orange-50 border border-orange-200 rounded-lg">
+                  <h4 className="font-medium text-orange-800 mb-2">Transparency Guarantee</h4>
+                  <p className="text-sm text-orange-700">
                     This study's protocols, updates, and results are permanently recorded on the blockchain, 
-                    ensuring complete transparency and preventing data manipulation or selective reporting. ✨
+                    ensuring complete transparency and preventing data manipulation or selective reporting.
                   </p>
                 </div>
               </CardContent>
