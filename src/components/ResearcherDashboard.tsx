@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -302,9 +303,14 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
                         <CardTitle className="text-gray-900 mb-2 font-medium">{study.name}</CardTitle>
-                        <CardDescription className="text-gray-700 mb-3 font-normal">
-                          {study.description}
-                        </CardDescription>
+                        <div className="mb-3 space-y-1">
+                          <CardDescription className="text-gray-700 font-normal">
+                            IRB: {study.irbRef || 'Not specified'}
+                          </CardDescription>
+                          <CardDescription className="text-gray-700 font-normal">
+                            Funding: {study.fundingAgency || 'Not specified'}
+                          </CardDescription>
+                        </div>
                         <div className="flex items-center space-x-2">
                           <Badge className={getStatusColor(study.status)}>
                             {study.status}
