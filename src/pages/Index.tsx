@@ -45,22 +45,22 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-violet-50 to-indigo-50">
       {/* Navigation */}
-      <nav className="bg-white/70 backdrop-blur-md border-b border-orange-100 sticky top-0 z-50">
+      <nav className="bg-white/70 backdrop-blur-md border-b border-purple-100 sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-red-500 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center">
                 <Shield className="h-5 w-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-amber-600 to-red-600 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                 VeriSearch
               </span>
             </div>
             <Button 
               onClick={handleGetStarted}
-              className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-600 hover:to-red-600 text-white border-0"
+              className="bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white border-0"
             >
               Get Started
               <ArrowRight className="h-4 w-4 ml-2" />
@@ -73,11 +73,11 @@ const Index = () => {
       <section className="container mx-auto px-6 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
-            <Badge className="mb-6 bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 border-amber-200">
+            <Badge className="mb-6 bg-gradient-to-r from-purple-100 to-violet-100 text-purple-700 border-purple-200">
               <Zap className="h-4 w-4 mr-2" />
               Powered by Blockchain
             </Badge>
-            <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 bg-clip-text text-transparent">
+            <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-violet-600 to-indigo-600 bg-clip-text text-transparent">
               Reclaim transparency in research.<br />
               Track your study. Stay informed.
             </h1>
@@ -89,7 +89,7 @@ const Index = () => {
             <Button 
               onClick={handleGetStarted}
               size="lg"
-              className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-600 hover:to-red-600 text-white text-lg px-8 py-6 rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white text-lg px-8 py-6 rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Start Your Journey
               <ArrowRight className="h-5 w-5 ml-2" />
@@ -101,7 +101,7 @@ const Index = () => {
       {/* Features Section */}
       <section className="container mx-auto px-6 py-16">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-amber-600 to-red-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
             Choose Your Path
           </h2>
           <p className="text-gray-600 text-lg">
@@ -111,12 +111,12 @@ const Index = () => {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Participants */}
-          <Card className="border-2 border-orange-100 hover:border-orange-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-orange-50">
+          <Card className="border-2 border-purple-100 hover:border-purple-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-purple-50">
             <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-amber-400 to-orange-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-400 to-violet-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-orange-800 text-xl">Participants</CardTitle>
+              <CardTitle className="text-purple-800 text-xl">Participants</CardTitle>
               <CardDescription className="text-gray-600">
                 Track your enrolled studies and receive real-time updates about research progress
               </CardDescription>
@@ -124,15 +124,15 @@ const Index = () => {
             <CardContent className="pt-0">
               <ul className="space-y-3 text-sm text-gray-600">
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
                   Monitor study protocols in real-time
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
                   Get notified of any changes
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-orange-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-purple-400 rounded-full mr-3"></div>
                   Access published results instantly
                 </li>
               </ul>
@@ -140,12 +140,12 @@ const Index = () => {
           </Card>
 
           {/* Researchers */}
-          <Card className="border-2 border-red-100 hover:border-red-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-red-50">
+          <Card className="border-2 border-violet-100 hover:border-violet-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-violet-50">
             <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-red-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-violet-400 to-indigo-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <FileText className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-red-800 text-xl">Researchers</CardTitle>
+              <CardTitle className="text-violet-800 text-xl">Researchers</CardTitle>
               <CardDescription className="text-gray-600">
                 Submit studies, update protocols, and maintain transparent research records
               </CardDescription>
@@ -153,15 +153,15 @@ const Index = () => {
             <CardContent className="pt-0">
               <ul className="space-y-3 text-sm text-gray-600">
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-violet-400 rounded-full mr-3"></div>
                   Immutable protocol versioning
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-violet-400 rounded-full mr-3"></div>
                   Blockchain-verified submissions
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-red-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-violet-400 rounded-full mr-3"></div>
                   Transparent research tracking
                 </li>
               </ul>
@@ -169,12 +169,12 @@ const Index = () => {
           </Card>
 
           {/* Public Oversight */}
-          <Card className="border-2 border-amber-100 hover:border-amber-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-amber-50">
+          <Card className="border-2 border-indigo-100 hover:border-indigo-300 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-white to-indigo-50">
             <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-amber-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Eye className="h-8 w-8 text-white" />
               </div>
-              <CardTitle className="text-amber-800 text-xl">Public Oversight</CardTitle>
+              <CardTitle className="text-indigo-800 text-xl">Public Oversight</CardTitle>
               <CardDescription className="text-gray-600">
                 Anyone can verify study authenticity and track research progress
               </CardDescription>
@@ -182,15 +182,15 @@ const Index = () => {
             <CardContent className="pt-0">
               <ul className="space-y-3 text-sm text-gray-600">
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full mr-3"></div>
                   Open study verification
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full mr-3"></div>
                   Community-driven oversight
                 </li>
                 <li className="flex items-center">
-                  <div className="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  <div className="w-2 h-2 bg-indigo-400 rounded-full mr-3"></div>
                   Publicly auditable records
                 </li>
               </ul>
@@ -200,9 +200,9 @@ const Index = () => {
       </section>
 
       {/* How It Works */}
-      <section className="container mx-auto px-6 py-16 bg-gradient-to-r from-amber-50/50 to-red-50/50 rounded-3xl mx-8 mb-16">
+      <section className="container mx-auto px-6 py-16 bg-gradient-to-r from-purple-50/50 to-indigo-50/50 rounded-3xl mx-8 mb-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-amber-600 to-red-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
             How VeriSearch Works
           </h2>
           <p className="text-gray-600 text-lg">
@@ -212,30 +212,30 @@ const Index = () => {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-amber-400 to-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+            <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
               1
             </div>
-            <h3 className="font-semibold text-amber-800 mb-2">Submit & Verify</h3>
+            <h3 className="font-semibold text-purple-800 mb-2">Submit & Verify</h3>
             <p className="text-gray-600 text-sm">
               Researchers submit protocols that are cryptographically signed and stored on blockchain
             </p>
           </div>
 
           <div className="text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+            <div className="w-12 h-12 bg-gradient-to-r from-violet-400 to-violet-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
               2
             </div>
-            <h3 className="font-semibold text-orange-800 mb-2">Track Progress</h3>
+            <h3 className="font-semibold text-violet-800 mb-2">Track Progress</h3>
             <p className="text-gray-600 text-sm">
               All changes and updates are immutably recorded, creating an audit trail
             </p>
           </div>
 
           <div className="text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
+            <div className="w-12 h-12 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
               3
             </div>
-            <h3 className="font-semibold text-red-800 mb-2">Stay Informed</h3>
+            <h3 className="font-semibold text-indigo-800 mb-2">Stay Informed</h3>
             <p className="text-gray-600 text-sm">
               Participants and the public receive real-time notifications about study progress
             </p>
@@ -244,13 +244,13 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white/70 backdrop-blur-md border-t border-orange-100 py-12">
+      <footer className="bg-white/70 backdrop-blur-md border-t border-purple-100 py-12">
         <div className="container mx-auto px-6 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-red-500 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg flex items-center justify-center">
               <Shield className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-amber-600 to-red-600 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
               VeriSearch
             </span>
           </div>
@@ -259,7 +259,7 @@ const Index = () => {
           </p>
           <Button 
             onClick={handleGetStarted}
-            className="bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-600 hover:to-red-600 text-white border-0"
+            className="bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white border-0"
           >
             Join the Movement
           </Button>
