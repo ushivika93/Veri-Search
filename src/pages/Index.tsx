@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -83,6 +84,18 @@ const Index = () => {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Button Section */}
+      <section className="container mx-auto px-6 pb-16 text-center">
+        <Button 
+          onClick={handleGetStarted}
+          size="lg"
+          className="bg-orange-400 hover:bg-orange-500 text-white text-lg px-8 py-6 rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-normal"
+        >
+          Start Your Journey
+          <ArrowRight className="h-5 w-5 ml-2" />
+        </Button>
       </section>
 
       {/* Features Section */}
