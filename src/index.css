@@ -46,17 +46,23 @@
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Minimal futuristic color variables */
-    --primary-blue: 221 83% 53%;
-    --primary-blue-light: 221 83% 70%;
-    --secondary-purple: 250 84% 54%;
-    --secondary-purple-light: 250 84% 70%;
-    --accent-cyan: 189 94% 43%;
-    --accent-cyan-light: 189 94% 70%;
-    --neutral-gray: 220 13% 46%;
-    --neutral-gray-light: 220 13% 85%;
-    --text-primary: 220 26% 14%;
-    --surface-elevated: 0 0% 99%;
+    /* Soft, easy-on-eyes color palette */
+    --soft-mint: 152 40% 75%;
+    --soft-mint-light: 152 45% 85%;
+    --sage-green: 140 30% 65%;
+    --sage-green-light: 140 35% 80%;
+    --soft-lavender: 250 25% 80%;
+    --soft-lavender-light: 250 30% 88%;
+    --warm-cream: 45 25% 92%;
+    --warm-cream-light: 45 30% 96%;
+    --dusty-blue: 210 35% 75%;
+    --dusty-blue-light: 210 40% 85%;
+    --soft-coral: 15 40% 80%;
+    --soft-coral-light: 15 45% 88%;
+    --neutral-warm: 30 8% 50%;
+    --neutral-warm-light: 30 12% 85%;
+    --text-soft: 210 15% 25%;
+    --surface-cream: 45 20% 97%;
   }
 
   .dark {

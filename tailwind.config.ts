@@ -63,17 +63,23 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Minimal futuristic colors
-				'primary-blue': 'hsl(var(--primary-blue))',
-				'primary-blue-light': 'hsl(var(--primary-blue-light))',
-				'secondary-purple': 'hsl(var(--secondary-purple))',
-				'secondary-purple-light': 'hsl(var(--secondary-purple-light))',
-				'accent-cyan': 'hsl(var(--accent-cyan))',
-				'accent-cyan-light': 'hsl(var(--accent-cyan-light))',
-				'neutral-gray': 'hsl(var(--neutral-gray))',
-				'neutral-gray-light': 'hsl(var(--neutral-gray-light))',
-				'text-primary': 'hsl(var(--text-primary))',
-				'surface-elevated': 'hsl(var(--surface-elevated))'
+				// Soft, easy-on-eyes colors
+				'soft-mint': 'hsl(var(--soft-mint))',
+				'soft-mint-light': 'hsl(var(--soft-mint-light))',
+				'sage-green': 'hsl(var(--sage-green))',
+				'sage-green-light': 'hsl(var(--sage-green-light))',
+				'soft-lavender': 'hsl(var(--soft-lavender))',
+				'soft-lavender-light': 'hsl(var(--soft-lavender-light))',
+				'warm-cream': 'hsl(var(--warm-cream))',
+				'warm-cream-light': 'hsl(var(--warm-cream-light))',
+				'dusty-blue': 'hsl(var(--dusty-blue))',
+				'dusty-blue-light': 'hsl(var(--dusty-blue-light))',
+				'soft-coral': 'hsl(var(--soft-coral))',
+				'soft-coral-light': 'hsl(var(--soft-coral-light))',
+				'neutral-warm': 'hsl(var(--neutral-warm))',
+				'neutral-warm-light': 'hsl(var(--neutral-warm-light))',
+				'text-soft': 'hsl(var(--text-soft))',
+				'surface-cream': 'hsl(var(--surface-cream))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
