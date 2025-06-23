@@ -4,15 +4,19 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Bell, Calendar, Eye, FileText, LogOut, Shield, TrendingUp, Users, Sparkles, Heart } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Bell, Calendar, Eye, FileText, LogOut, Shield, TrendingUp, Users, Sparkles, Heart, Search } from "lucide-react";
 
 interface ParticipantDashboardProps {
   onViewStudy: () => void;
   onLogout: () => void;
+  onBackToHome: () => void;
 }
 
-const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardProps) => {
+const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: ParticipantDashboardProps) => {
   const [filter, setFilter] = useState<'all' | 'ongoing' | 'analyzing' | 'published'>('all');
+  const [followedFilter, setFollowedFilter] = useState<'all' | 'ongoing' | 'analyzing' | 'published'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const mockStudies = [
     {
@@ -50,9 +54,38 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
     }
   ];
 
+  const mockFollowedStudies = [
+    {
+      id: 4,
+      name: "Mental Health and Exercise Study",
+      sponsor: "Psychology Research Center",
+      status: "Active – Data Collection",
+      statusType: "ongoing" as const,
+      approved: "February 20, 2024",
+      lastUpdate: "5 days ago",
+      protocolVersion: "v1.2",
+      notifications: 0
+    },
+    {
+      id: 5,
+      name: "Nutrition and Longevity Research",
+      sponsor: "Aging Research Institute",
+      status: "Now Analyzing",
+      statusType: "analyzing" as const,
+      approved: "December 10, 2023",
+      lastUpdate: "2 weeks ago",
+      protocolVersion: "v2.0",
+      notifications: 1
+    }
+  ];
+
   const filteredStudies = filter === 'all' 
     ? mockStudies 
     : mockStudies.filter(study => study.statusType === filter);
+
+  const filteredFollowedStudies = followedFilter === 'all'
+    ? mockFollowedStudies
+    : mockFollowedStudies.filter(study => study.statusType === followedFilter);
 
   const getStatusColor = (statusType: string) => {
     switch (statusType) {
@@ -78,15 +111,27 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
               </div>
               <Badge className="bg-orange-100 text-orange-700 border-orange-200">
                 <Sparkles className="h-3 w-3 mr-1" />
-                Participant
+                Participant and Public
               </Badge>
             </div>
             <div className="flex items-center space-x-4">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Input
+                  placeholder="Search studies..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 w-64 bg-white/70 border-white/30 focus:border-orange-300 focus:ring-orange-200"
+                />
+              </div>
               <Button variant="ghost" size="sm" className="relative hover:bg-orange-50 text-gray-600 hover:text-gray-800 font-normal">
                 <Bell className="h-5 w-5" />
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-400 rounded-full text-xs text-white flex items-center justify-center">
                   3
                 </div>
+              </Button>
+              <Button variant="ghost" onClick={onBackToHome} className="text-gray-600 hover:text-gray-800 hover:bg-orange-50 font-normal">
+                Back to Home
               </Button>
               <Button variant="ghost" onClick={onLogout} className="text-gray-600 hover:text-gray-800 hover:bg-orange-50 font-normal">
                 <LogOut className="h-4 w-4 mr-2" />
@@ -126,11 +171,11 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-orange-600">Notifications</p>
-                  <p className="text-2xl font-medium text-orange-800">3</p>
+                  <p className="text-sm font-medium text-orange-600">Following</p>
+                  <p className="text-2xl font-medium text-orange-800">2</p>
                 </div>
                 <div className="w-12 h-12 bg-orange-400 rounded-2xl flex items-center justify-center">
-                  <Bell className="h-6 w-6 text-white" />
+                  <Heart className="h-6 w-6 text-white" />
                 </div>
               </div>
             </CardContent>
@@ -168,7 +213,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
         <Tabs defaultValue="studies" className="space-y-6">
           <TabsList className="grid w-full grid-cols-2 lg:w-400 bg-white/80 backdrop-blur-sm">
             <TabsTrigger value="studies" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white font-normal">My Studies</TabsTrigger>
-            <TabsTrigger value="notifications" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white font-normal">Notifications</TabsTrigger>
+            <TabsTrigger value="following" className="data-[state=active]:bg-orange-400 data-[state=active]:text-white font-normal">Studies I'm Following</TabsTrigger>
           </TabsList>
 
           <TabsContent value="studies" className="space-y-6">
@@ -269,32 +314,102 @@ const ParticipantDashboard = ({ onViewStudy, onLogout }: ParticipantDashboardPro
             </div>
           </TabsContent>
 
-          <TabsContent value="notifications" className="space-y-4">
-            <Card className="border-white/30 bg-white/80 backdrop-blur-sm">
-              <CardHeader>
-                <CardTitle className="text-gray-900 font-medium">Recent Notifications</CardTitle>
-                <CardDescription className="text-gray-700 font-normal">Stay updated on your research journey</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="border-l-4 border-blue-400 pl-4 py-2 bg-blue-50 rounded-r-lg">
-                  <p className="font-medium text-blue-800">Protocol Update - Cardiovascular Health Study</p>
-                  <p className="text-sm text-blue-600 font-normal">Study protocol updated to version 2.1. Check out the changes!</p>
-                  <p className="text-xs text-blue-500 mt-1 font-normal">2 days ago</p>
-                </div>
-                
-                <div className="border-l-4 border-green-400 pl-4 py-2 bg-green-50 rounded-r-lg">
-                  <p className="font-medium text-green-800">Results Published - Sleep Quality Research</p>
-                  <p className="text-sm text-green-600 font-normal">Final results are now available for you to explore.</p>
-                  <p className="text-xs text-green-500 mt-1 font-normal">3 weeks ago</p>
-                </div>
-                
-                <div className="border-l-4 border-orange-400 pl-4 py-2 bg-orange-50 rounded-r-lg">
-                  <p className="font-medium text-orange-800">Study Phase Change - Diabetes Prevention Trial</p>
-                  <p className="text-sm text-orange-600 font-normal">Study has moved to analysis phase.</p>
-                  <p className="text-xs text-orange-500 mt-1 font-normal">1 week ago</p>
-                </div>
-              </CardContent>
-            </Card>
+          <TabsContent value="following" className="space-y-6">
+            {/* Filter Buttons for Following */}
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant={followedFilter === 'all' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setFollowedFilter('all')}
+                className={followedFilter === 'all' ? 'bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal' : 'border-orange-200 text-orange-700 hover:bg-orange-50 font-normal'}
+              >
+                All Studies
+              </Button>
+              <Button
+                variant={followedFilter === 'ongoing' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setFollowedFilter('ongoing')}
+                className={followedFilter === 'ongoing' ? 'bg-blue-400 hover:bg-blue-500 text-white border-0 font-normal' : 'border-blue-200 text-blue-700 hover:bg-blue-50 font-normal'}
+              >
+                Ongoing
+              </Button>
+              <Button
+                variant={followedFilter === 'analyzing' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setFollowedFilter('analyzing')}
+                className={followedFilter === 'analyzing' ? 'bg-yellow-400 hover:bg-yellow-500 text-white border-0 font-normal' : 'border-yellow-200 text-yellow-700 hover:bg-yellow-50 font-normal'}
+              >
+                Analyzing
+              </Button>
+              <Button
+                variant={followedFilter === 'published' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setFollowedFilter('published')}
+                className={followedFilter === 'published' ? 'bg-green-400 hover:bg-green-500 text-white border-0 font-normal' : 'border-green-200 text-green-700 hover:bg-green-50 font-normal'}
+              >
+                Published
+              </Button>
+            </div>
+
+            {/* Followed Studies List */}
+            <div className="space-y-4">
+              {filteredFollowedStudies.map((study) => (
+                <Card key={study.id} className="border-white/30 hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <CardTitle className="text-gray-900 mb-2 font-medium">{study.name}</CardTitle>
+                        <CardDescription className="text-gray-700 font-normal">
+                          Sponsored by {study.sponsor}
+                        </CardDescription>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        {study.notifications > 0 && (
+                          <Badge className="bg-orange-100 text-orange-700 border-orange-200">
+                            <Heart className="h-3 w-3 mr-1" />
+                            {study.notifications} new
+                          </Badge>
+                        )}
+                        <Badge className={getStatusColor(study.statusType)}>
+                          {study.status}
+                        </Badge>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  
+                  <CardContent className="space-y-4">
+                    <div className="grid md:grid-cols-3 gap-4 text-sm">
+                      <div>
+                        <p className="font-medium text-gray-700">Approved</p>
+                        <p className="text-gray-600 font-normal">{study.approved}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-700">Last Update</p>
+                        <p className="text-gray-600 font-normal">{study.lastUpdate}</p>
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-700">Protocol Version</p>
+                        <p className="text-gray-600 font-normal">{study.protocolVersion}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex justify-between items-center pt-4 border-t border-white/30">
+                      <Button variant="outline" size="sm" className="border-orange-200 text-orange-700 hover:bg-orange-50 font-normal">
+                        View Timeline
+                      </Button>
+                      <Button 
+                        onClick={onViewStudy}
+                        className="bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal"
+                        size="sm"
+                      >
+                        <Eye className="h-4 w-4 mr-2" />
+                        View Details
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </TabsContent>
         </Tabs>
       </div>
