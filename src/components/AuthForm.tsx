@@ -1,5 +1,4 @@
 
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -26,23 +25,23 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex flex-col px-6">
+    <div className="min-h-screen bg-gradient-to-br from-orange-100 to-pink-100 flex flex-col px-6">
       {/* Header with logo and back button */}
-      <div className="flex items-center justify-between w-full py-4">
+      <div className="flex items-center justify-between w-full py-6">
         <div className="flex items-center space-x-2">
-          <div className="w-5 h-5 bg-emerald-500 rounded-lg flex items-center justify-center">
-            <Shield className="h-3 w-3 text-white" />
+          <div className="w-6 h-6 bg-orange-400 rounded-lg flex items-center justify-center">
+            <Shield className="h-4 w-4 text-white" />
           </div>
-          <span className="text-base font-medium text-gray-900">VeriSearch</span>
+          <span className="text-lg font-medium text-gray-900">VeriSearch</span>
         </div>
         
         <Button 
           onClick={onBack}
           size="sm"
-          className="bg-emerald-500 hover:bg-emerald-600 text-white border-0 shadow-lg text-xs px-3 py-1.5"
+          className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg text-sm"
         >
           <ArrowLeft className="h-3 w-3 mr-1" />
-          Back
+          Back to Home
         </Button>
       </div>
 
@@ -51,44 +50,44 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
         <div className="w-full max-w-md">
           {!selectedRole ? (
             <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-900 text-center mb-8">Choose Your Role</h2>
+              <h2 className="text-xl font-medium text-gray-900 text-center mb-8">Choose Your Role</h2>
               
               <Card 
-                className="cursor-pointer border border-emerald-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="cursor-pointer border border-white/30 hover:border-white/50 hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
                 onClick={() => setSelectedRole('participant')}
               >
                 <CardHeader className="text-center pb-6">
-                  <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-orange-400 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <Users className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-gray-900 font-semibold">Participant</CardTitle>
-                  <CardDescription className="text-gray-600">
+                  <CardTitle className="text-gray-900 font-medium">Participant</CardTitle>
+                  <CardDescription className="text-gray-700 font-normal">
                     Track your studies and monitor research progress
                   </CardDescription>
                 </CardHeader>
               </Card>
 
               <Card 
-                className="cursor-pointer border border-emerald-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="cursor-pointer border border-white/30 hover:border-white/50 hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
                 onClick={() => setSelectedRole('researcher')}
               >
                 <CardHeader className="text-center pb-6">
-                  <div className="w-12 h-12 bg-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-orange-400 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <FileText className="h-6 w-6 text-white" />
                   </div>
-                  <CardTitle className="text-gray-900 font-semibold">Researcher</CardTitle>
-                  <CardDescription className="text-gray-600">
+                  <CardTitle className="text-gray-900 font-medium">Researcher</CardTitle>
+                  <CardDescription className="text-gray-700 font-normal">
                     Submit studies and maintain transparent records
                   </CardDescription>
                 </CardHeader>
               </Card>
             </div>
           ) : (
-            <Card className="border-emerald-100 bg-white/80 backdrop-blur-sm shadow-lg">
+            <Card className="border-white/30 bg-white/80 backdrop-blur-sm shadow-lg">
               <CardHeader>
                 <div className="flex items-center space-x-2 mb-3">
                   <Badge 
-                    className="bg-emerald-100 text-emerald-700 border-emerald-200"
+                    className="bg-white/30 text-gray-800 border-white/40 backdrop-blur-sm"
                   >
                     <Sparkles className="h-3 w-3 mr-1" />
                     {selectedRole === 'participant' ? 'Participant' : 'Researcher'}
@@ -97,7 +96,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                     variant="ghost" 
                     size="sm"
                     onClick={() => setSelectedRole(null)}
-                    className="text-gray-600 hover:text-gray-800 hover:bg-emerald-50"
+                    className="text-gray-600 hover:text-gray-800 hover:bg-white/20"
                   >
                     Change
                   </Button>
@@ -107,7 +106,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-800">Email</Label>
+                    <Label htmlFor="email" className="text-gray-800 font-normal">Email</Label>
                     <Input
                       id="email"
                       type="email"
@@ -115,37 +114,37 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
-                      className="border-emerald-200 focus:border-emerald-300 focus:ring-emerald-200 bg-white/70"
+                      className="border-white/30 focus:border-orange-300 focus:ring-orange-200 bg-white/50"
                     />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="password" className="text-gray-800">Password</Label>
+                    <Label htmlFor="password" className="text-gray-800 font-normal">Password</Label>
                     <Input
                       id="password"
                       type="password"
                       placeholder="Enter your password"
                       required
-                      className="border-emerald-200 focus:border-emerald-300 focus:ring-emerald-200 bg-white/70"
+                      className="border-white/30 focus:border-orange-300 focus:ring-orange-200 bg-white/50"
                     />
                   </div>
 
                   {!isLogin && (
                     <div className="space-y-2">
-                      <Label htmlFor="confirmPassword" className="text-gray-800">Confirm Password</Label>
+                      <Label htmlFor="confirmPassword" className="text-gray-800 font-normal">Confirm Password</Label>
                       <Input
                         id="confirmPassword"
                         type="password"
                         placeholder="Confirm your password"
                         required
-                        className="border-emerald-200 focus:border-emerald-300 focus:ring-emerald-200 bg-white/70"
+                        className="border-white/30 focus:border-orange-300 focus:ring-orange-200 bg-white/50"
                       />
                     </div>
                   )}
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-emerald-500 hover:bg-emerald-600 text-white border-0 shadow-lg"
+                    className="w-full bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal shadow-lg"
                     disabled={!email}
                   >
                     {isLogin ? 'Sign In' : 'Create Account'}
@@ -156,15 +155,15 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                   <Button 
                     variant="link" 
                     onClick={() => setIsLogin(!isLogin)}
-                    className="text-gray-700 hover:text-gray-900"
+                    className="text-gray-700 hover:text-gray-900 font-normal"
                   >
                     {isLogin ? "New to VeriSearch? Create account" : "Already have an account? Sign in"}
                   </Button>
                 </div>
 
                 {!isLogin && (
-                  <div className="mt-4 p-4 bg-emerald-50 rounded-lg border border-emerald-100">
-                    <p className="text-xs text-gray-700">
+                  <div className="mt-4 p-4 bg-white/50 rounded-lg border border-white/30 backdrop-blur-sm">
+                    <p className="text-xs text-gray-700 font-normal">
                       Connect your wallet later for enhanced verification and blockchain features.
                     </p>
                   </div>
@@ -179,4 +178,3 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
 };
 
 export default AuthForm;
-
