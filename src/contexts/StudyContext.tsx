@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface Study {
@@ -17,6 +18,8 @@ interface Study {
   approved?: string;
   notifications?: number;
   statusNotes?: string;
+  irbRef?: string;
+  fundingAgency?: string;
 }
 
 interface StudyContextType {
@@ -55,7 +58,9 @@ export const StudyProvider = ({ children }: StudyProviderProps) => {
       targetParticipants: 200,
       created: "February 1, 2024",
       lastUpdated: "Yesterday",
-      protocolVersion: "v1.2"
+      protocolVersion: "v1.2",
+      irbRef: "IRB-2024-0156",
+      fundingAgency: "National Science Foundation"
     },
     {
       id: 2,
@@ -69,7 +74,9 @@ export const StudyProvider = ({ children }: StudyProviderProps) => {
       targetParticipants: 150,
       created: "December 15, 2023",
       lastUpdated: "3 days ago",
-      protocolVersion: "v2.0"
+      protocolVersion: "v2.0",
+      irbRef: "IRB-2023-0892",
+      fundingAgency: "NIH - NHLBI"
     },
     {
       id: 3,
@@ -83,7 +90,9 @@ export const StudyProvider = ({ children }: StudyProviderProps) => {
       targetParticipants: 300,
       created: "September 10, 2023",
       lastUpdated: "1 week ago",
-      protocolVersion: "v1.1"
+      protocolVersion: "v1.1",
+      irbRef: "IRB-2023-0654",
+      fundingAgency: "AHRQ Grant R01"
     },
     // Participant studies (same studies from participant perspective)
     {
