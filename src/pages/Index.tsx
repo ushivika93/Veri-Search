@@ -1,5 +1,3 @@
-
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -71,7 +69,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-6 py-20 text-center">
+      <section className="container mx-auto px-6 py-32 text-center">
         <div className="max-w-4xl mx-auto">
           <div className="mb-8">
             <h1 className="text-5xl font-medium mb-6 text-gray-900">
@@ -85,18 +83,6 @@ const Index = () => {
             </p>
           </div>
         </div>
-      </section>
-
-      {/* Button Section */}
-      <section className="container mx-auto px-6 pb-16 text-center">
-        <Button 
-          onClick={handleGetStarted}
-          size="lg"
-          className="bg-orange-400 hover:bg-orange-500 text-white text-lg px-8 py-6 rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-normal"
-        >
-          Start Your Journey
-          <ArrowRight className="h-5 w-5 ml-2" />
-        </Button>
       </section>
 
       {/* Features Section */}
@@ -218,7 +204,7 @@ const Index = () => {
             </div>
             <h3 className="font-medium text-gray-900 mb-2">Submit & Verify</h3>
             <p className="text-gray-700 text-sm font-normal">
-              Researchers submit protocols that are cryptographically signed and stored on blockchain
+              Researchers submit protocols and study progression updates that are cryptographically signed and stored on blockchain
             </p>
           </div>
 
@@ -271,4 +257,3 @@ const Index = () => {
 };
 
 export default Index;
-
