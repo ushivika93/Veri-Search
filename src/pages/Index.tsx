@@ -78,21 +78,25 @@ const Index = () => {
               Reclaim transparency in research.<br />
               Track your study. Stay informed.
             </h1>
-            <p className="text-xl text-gray-700 mb-18 leading-relaxed font-normal">
+            <p className="text-xl text-gray-700 mb-8 leading-relaxed font-normal">
               VeriSearch brings unprecedented transparency to clinical research through blockchain technology. 
               Participants can track their studies in real-time, while researchers maintain immutable records 
               of their protocols and findings.
             </p>
-            <Button 
-              onClick={handleGetStarted}
-              size="lg"
-              className="bg-orange-400 hover:bg-orange-500 text-white text-lg px-8 py-6 rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-normal"
-            >
-              Start Your Journey
-              <ArrowRight className="h-5 w-5 ml-2" />
-            </Button>
           </div>
         </div>
+      </section>
+
+      {/* Button Section */}
+      <section className="container mx-auto px-6 pb-16 text-center">
+        <Button 
+          onClick={handleGetStarted}
+          size="lg"
+          className="bg-orange-400 hover:bg-orange-500 text-white text-lg px-8 py-6 rounded-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-normal"
+        >
+          Start Your Journey
+          <ArrowRight className="h-5 w-5 ml-2" />
+        </Button>
       </section>
 
       {/* Features Section */}
