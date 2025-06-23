@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,6 +9,7 @@ import { Bell, Calendar, Eye, FileText, LogOut, Shield, TrendingUp, Users, Spark
 import StudySearchModal from "./StudySearchModal";
 import StudyDetailsModal from "./StudyDetailsModal";
 import FollowTypeModal from "./FollowTypeModal";
+import { useStudyContext } from "../contexts/StudyContext";
 
 interface ParticipantDashboardProps {
   onViewStudy: () => void;
@@ -28,6 +30,7 @@ interface Study {
 }
 
 const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: ParticipantDashboardProps) => {
+  const { studies } = useStudyContext();
   const [filter, setFilter] = useState<'all' | 'ongoing' | 'analyzing' | 'published'>('all');
   const [followedFilter, setFollowedFilter] = useState<'all' | 'ongoing' | 'analyzing' | 'published'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -38,68 +41,11 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
   const [isFollowTypeModalOpen, setIsFollowTypeModalOpen] = useState(false);
   const [selectedStudy, setSelectedStudy] = useState<Study | null>(null);
 
-  // Mock studies
-  const mockStudies = [
-    {
-      id: 1,
-      name: "Cardiovascular Health Study 2024",
-      sponsor: "University Medical Center",
-      status: "Active – Data Collection",
-      statusType: "ongoing" as const,
-      enrolled: "March 15, 2024",
-      lastUpdate: "2 days ago",
-      protocolVersion: "v2.1",
-      notifications: 2
-    },
-    {
-      id: 2,
-      name: "Diabetes Prevention Trial",
-      sponsor: "National Health Institute",
-      status: "Now Analyzing",
-      statusType: "analyzing" as const,
-      enrolled: "January 8, 2024",
-      lastUpdate: "1 week ago", 
-      protocolVersion: "v1.3",
-      notifications: 0
-    },
-    {
-      id: 3,
-      name: "Sleep Quality Research",
-      sponsor: "Sleep Research Foundation",
-      status: "Results Published",
-      statusType: "published" as const,
-      enrolled: "October 2, 2023",
-      lastUpdate: "3 weeks ago",
-      protocolVersion: "v1.0",
-      notifications: 1
-    }
-  ];
-
-  // Mock followed studies
-  const mockFollowedStudies = [
-    {
-      id: 4,
-      name: "Mental Health and Exercise Study",
-      sponsor: "Psychology Research Center",
-      status: "Active – Data Collection",
-      statusType: "ongoing" as const,
-      approved: "February 20, 2024",
-      lastUpdate: "5 days ago",
-      protocolVersion: "v1.2",
-      notifications: 0
-    },
-    {
-      id: 5,
-      name: "Nutrition and Longevity Research",
-      sponsor: "Aging Research Institute",
-      status: "Now Analyzing",
-      statusType: "analyzing" as const,
-      approved: "December 10, 2023",
-      lastUpdate: "2 weeks ago",
-      protocolVersion: "v2.0",
-      notifications: 1
-    }
-  ];
+  // Filter studies for participant view (studies with enrolled field)
+  const participantStudies = studies.filter(study => study.enrolled);
+  
+  // Filter studies for followed view (studies with approved field)
+  const followedStudies = studies.filter(study => study.approved);
 
   const handleSearchModalOpen = () => {
     setIsSearchModalOpen(true);
@@ -124,12 +70,12 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
   };
 
   const filteredStudies = filter === 'all' 
-    ? mockStudies 
-    : mockStudies.filter(study => study.statusType === filter);
+    ? participantStudies 
+    : participantStudies.filter(study => study.statusType === filter);
 
   const filteredFollowedStudies = followedFilter === 'all'
-    ? mockFollowedStudies
-    : mockFollowedStudies.filter(study => study.statusType === followedFilter);
+    ? followedStudies
+    : followedStudies.filter(study => study.statusType === followedFilter);
 
   const getStatusColor = (statusType: string) => {
     switch (statusType) {
@@ -139,6 +85,8 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
       default: return 'bg-orange-100 text-orange-700 border-orange-200';
     }
   };
+
+  const totalNotifications = [...participantStudies, ...followedStudies].reduce((total, study) => total + (study.notifications || 0), 0);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-100 to-pink-100">
@@ -172,9 +120,11 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
               </div>
               <Button variant="ghost" size="sm" className="relative hover:bg-orange-50 text-gray-600 hover:text-gray-800 font-normal">
                 <Bell className="h-5 w-5" />
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-400 rounded-full text-xs text-white flex items-center justify-center">
-                  3
-                </div>
+                {totalNotifications > 0 && (
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-400 rounded-full text-xs text-white flex items-center justify-center">
+                    {totalNotifications}
+                  </div>
+                )}
               </Button>
               <Button variant="ghost" onClick={onBackToHome} className="text-gray-600 hover:text-gray-800 hover:bg-orange-50 font-normal">
                 Back to Home
@@ -204,7 +154,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600">Active Studies</p>
-                  <p className="text-2xl font-medium text-orange-800">3</p>
+                  <p className="text-2xl font-medium text-orange-800">{participantStudies.length}</p>
                 </div>
                 <div className="w-12 h-12 bg-orange-400 rounded-2xl flex items-center justify-center">
                   <FileText className="h-6 w-6 text-white" />
@@ -218,7 +168,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600">Following</p>
-                  <p className="text-2xl font-medium text-orange-800">2</p>
+                  <p className="text-2xl font-medium text-orange-800">{followedStudies.length}</p>
                 </div>
                 <div className="w-12 h-12 bg-orange-400 rounded-2xl flex items-center justify-center">
                   <Heart className="h-6 w-6 text-white" />
@@ -310,9 +260,15 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
                         <CardDescription className="text-gray-700 font-normal">
                           Sponsored by {study.sponsor}
                         </CardDescription>
+                        {study.statusNotes && (
+                          <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded-md">
+                            <p className="text-sm text-blue-700 font-medium">Latest Update:</p>
+                            <p className="text-sm text-blue-600 font-normal">{study.statusNotes}</p>
+                          </div>
+                        )}
                       </div>
                       <div className="flex items-center space-x-2">
-                        {study.notifications > 0 && (
+                        {(study.notifications || 0) > 0 && (
                           <Badge className="bg-orange-100 text-orange-700 border-orange-200">
                             <Heart className="h-3 w-3 mr-1" />
                             {study.notifications} new
@@ -333,7 +289,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
                       </div>
                       <div>
                         <p className="font-medium text-gray-700">Last Update</p>
-                        <p className="text-gray-600 font-normal">{study.lastUpdate}</p>
+                        <p className="text-gray-600 font-normal">{study.lastUpdated}</p>
                       </div>
                       <div>
                         <p className="font-medium text-gray-700">Protocol Version</p>
@@ -408,9 +364,15 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
                         <CardDescription className="text-gray-700 font-normal">
                           Sponsored by {study.sponsor}
                         </CardDescription>
+                        {study.statusNotes && (
+                          <div className="mt-2 p-2 bg-blue-50 border border-blue-200 rounded-md">
+                            <p className="text-sm text-blue-700 font-medium">Latest Update:</p>
+                            <p className="text-sm text-blue-600 font-normal">{study.statusNotes}</p>
+                          </div>
+                        )}
                       </div>
                       <div className="flex items-center space-x-2">
-                        {study.notifications > 0 && (
+                        {(study.notifications || 0) > 0 && (
                           <Badge className="bg-orange-100 text-orange-700 border-orange-200">
                             <Heart className="h-3 w-3 mr-1" />
                             {study.notifications} new
@@ -431,7 +393,7 @@ const ParticipantDashboard = ({ onViewStudy, onLogout, onBackToHome }: Participa
                       </div>
                       <div>
                         <p className="font-medium text-gray-700">Last Update</p>
-                        <p className="text-gray-600 font-normal">{study.lastUpdate}</p>
+                        <p className="text-gray-600 font-normal">{study.lastUpdated}</p>
                       </div>
                       <div>
                         <p className="font-medium text-gray-700">Protocol Version</p>

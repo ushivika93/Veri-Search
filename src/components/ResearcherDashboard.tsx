@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,12 +10,14 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { FileText, LogOut, Plus, Shield, Users, Calendar, TrendingUp, Edit, Sparkles, Zap } from "lucide-react";
 import StudyStatusModal from "./StudyStatusModal";
+import { useStudyContext } from "../contexts/StudyContext";
 
 interface ResearcherDashboardProps {
   onLogout: () => void;
 }
 
 const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
+  const { studies, updateStudyStatus } = useStudyContext();
   const [isNewStudyOpen, setIsNewStudyOpen] = useState(false);
   const [statusModalOpen, setStatusModalOpen] = useState(false);
   const [selectedStudy, setSelectedStudy] = useState<any>(null);
@@ -29,44 +30,8 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
     estimatedDuration: ""
   });
 
-  const [mockStudies, setMockStudies] = useState([
-    {
-      id: 1,
-      name: "AI-Assisted Diagnostic Tool Validation",
-      description: "Evaluating the effectiveness of AI in medical diagnosis",
-      status: "Active – Recruiting",
-      phase: "Phase II",
-      participants: 145,
-      targetParticipants: 200,
-      created: "February 1, 2024",
-      lastUpdated: "Yesterday",
-      protocolVersion: "v1.2"
-    },
-    {
-      id: 2,
-      name: "Remote Patient Monitoring Study",
-      description: "Assessment of wearable devices for chronic condition management",
-      status: "Data Collection",
-      phase: "Phase III",
-      participants: 89,
-      targetParticipants: 150,
-      created: "December 15, 2023",
-      lastUpdated: "3 days ago",
-      protocolVersion: "v2.0"
-    },
-    {
-      id: 3,
-      name: "Telemedicine Effectiveness Analysis",
-      description: "Comparing outcomes between virtual and in-person consultations",
-      status: "Analysis Phase",
-      phase: "Phase III",
-      participants: 300,
-      targetParticipants: 300,
-      created: "September 10, 2023",
-      lastUpdated: "1 week ago",
-      protocolVersion: "v1.1"
-    }
-  ]);
+  // Filter studies for researcher (studies with description, phase, participants, etc.)
+  const researcherStudies = studies.filter(study => study.description && study.phase);
 
   const handleSubmitStudy = (e: React.FormEvent) => {
     e.preventDefault();
@@ -84,13 +49,7 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
 
   const handleUpdateStatus = (newStatus: string, notes: string) => {
     if (selectedStudy) {
-      setMockStudies(studies => 
-        studies.map(study => 
-          study.id === selectedStudy.id 
-            ? { ...study, status: newStatus, lastUpdated: "Just now" }
-            : study
-        )
-      );
+      updateStudyStatus(selectedStudy.id, newStatus, notes);
       console.log(`Updated study ${selectedStudy.name} to status: ${newStatus}`, notes);
     }
     setSelectedStudy(null);
@@ -271,7 +230,7 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-orange-600">Active Studies</p>
-                  <p className="text-2xl font-medium text-orange-800">3</p>
+                  <p className="text-2xl font-medium text-orange-800">{researcherStudies.length}</p>
                 </div>
                 <div className="w-12 h-12 bg-orange-400 rounded-2xl flex items-center justify-center">
                   <FileText className="h-6 w-6 text-white" />
@@ -285,7 +244,9 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-green-600">Total Participants</p>
-                  <p className="text-2xl font-medium text-green-800">534</p>
+                  <p className="text-2xl font-medium text-green-800">
+                    {researcherStudies.reduce((total, study) => total + (study.participants || 0), 0)}
+                  </p>
                 </div>
                 <div className="w-12 h-12 bg-green-400 rounded-2xl flex items-center justify-center">
                   <Users className="h-6 w-6 text-white" />
@@ -333,7 +294,7 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
           <TabsContent value="studies" className="space-y-6">
             {/* Studies List */}
             <div className="space-y-4">
-              {mockStudies.map((study) => (
+              {researcherStudies.map((study) => (
                 <Card key={study.id} className="border-white/30 hover:shadow-xl transition-all duration-300 bg-white/80 backdrop-blur-sm">
                   <CardHeader>
                     <div className="flex items-start justify-between">
@@ -380,13 +341,13 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
                       <div className="flex justify-between text-sm">
                         <span className="text-gray-700 font-normal">Enrollment Progress</span>
                         <span className="text-gray-900 font-medium">
-                          {Math.round((study.participants / study.targetParticipants) * 100)}%
+                          {Math.round(((study.participants || 0) / (study.targetParticipants || 1)) * 100)}%
                         </span>
                       </div>
                       <div className="w-full bg-orange-100 rounded-full h-3">
                         <div 
                           className="bg-orange-400 h-3 rounded-full transition-all duration-500"
-                          style={{ width: `${(study.participants / study.targetParticipants) * 100}%` }}
+                          style={{ width: `${((study.participants || 0) / (study.targetParticipants || 1)) * 100}%` }}
                         ></div>
                       </div>
                     </div>
@@ -473,7 +434,7 @@ const ResearcherDashboard = ({ onLogout }: ResearcherDashboardProps) => {
                     </div>
                     <div>
                       <p className="font-medium text-gray-700">Studies Submitted</p>
-                      <p className="text-gray-600 font-normal">3 studies</p>
+                      <p className="text-gray-600 font-normal">{researcherStudies.length} studies</p>
                     </div>
                   </div>
                 </div>
