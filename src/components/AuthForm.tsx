@@ -29,7 +29,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
       {/* Header with logo and back button */}
       <div className="flex items-center justify-between w-full py-6">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-orange-300 to-pink-300 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-orange-400 rounded-lg flex items-center justify-center">
             <Shield className="h-5 w-5 text-white" />
           </div>
           <span className="text-xl font-medium text-gray-900">VeriSearch</span>
@@ -37,7 +37,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
         
         <Button 
           onClick={onBack}
-          className="bg-gradient-to-r from-orange-300 to-pink-300 hover:from-orange-400 hover:to-pink-400 text-white border-0 shadow-lg"
+          className="bg-orange-400 hover:bg-orange-500 text-white border-0 shadow-lg"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Home
@@ -56,7 +56,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                 onClick={() => setSelectedRole('participant')}
               >
                 <CardHeader className="text-center pb-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-orange-300 to-pink-300 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-orange-400 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <Users className="h-6 w-6 text-white" />
                   </div>
                   <CardTitle className="text-gray-900 font-medium">Participant</CardTitle>
@@ -71,7 +71,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
                 onClick={() => setSelectedRole('researcher')}
               >
                 <CardHeader className="text-center pb-6">
-                  <div className="w-12 h-12 bg-gradient-to-r from-orange-300 to-pink-300 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-orange-400 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <FileText className="h-6 w-6 text-white" />
                   </div>
                   <CardTitle className="text-gray-900 font-medium">Researcher</CardTitle>
@@ -143,7 +143,7 @@ const AuthForm = ({ onLogin, onBack }: AuthFormProps) => {
 
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-orange-300 to-pink-300 hover:from-orange-400 hover:to-pink-400 text-white border-0 font-normal shadow-lg"
+                    className="w-full bg-orange-400 hover:bg-orange-500 text-white border-0 font-normal shadow-lg"
                     disabled={!email}
                   >
                     {isLogin ? 'Sign In' : 'Create Account'}
